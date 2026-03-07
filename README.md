@@ -31,14 +31,7 @@ Diseñar e implementar una aplicación web que permita administrar de forma orga
 
 **Backend**
 - Spring Boot
-- API REST
-
-**Frontend**
-- React
-- TypeScript
-
-**Base de Datos**
-- PostgreSQL
+- Java
 
 **Gestión del Proyecto**
 - Scrum
