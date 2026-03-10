@@ -30,7 +30,8 @@ Diseñar e implementar una aplicación web que permita administrar de forma orga
 ## Tecnologías Utilizadas
 
 **Frontend**
--Figma:
+
+- Figma:
 https://pixso.net/app/design/eY3DOlkD23U2UYJmHkOs6A?showQuickFrame=true&new=1&icon_type=1&page-id=0%3A1 
 
 **Backend**
