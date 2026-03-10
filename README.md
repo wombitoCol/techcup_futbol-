@@ -40,6 +40,10 @@ Diseñar e implementar una aplicación web que permita administrar de forma orga
 **Control de Versiones**
 - Git / GitHub
 
+**Díagrama de contexto:**
+<img width="969" height="559" alt="image" src="https://github.com/user-attachments/assets/d2a74db8-dc8d-4d4a-a7c7-1a7c3c3d0ad8" />
+
+
 ---
 
 ## Estructura del Proyecto
