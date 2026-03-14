@@ -54,3 +54,18 @@ https://pixso.net/app/design/eY3DOlkD23U2UYJmHkOs6A?showQuickFrame=true&new=1&ic
 ## Estructura del Proyecto
 
 El sistema sigue una arquitectura por capas en el backend:
+
+
+## Respuestas a preguntas 
+
+Controller: Sirve para exponer los endpoints (API REST). Recibe las peticiones HTTP del cliente, delega la lógica al Service y retorna la respuesta HTTP adecuada.
+
+Service: Contiene toda la lógica de negocio y las reglas de la aplicación. Actúa como puente entre el Controller y el Repository.
+
+Repository: Se encarga del acceso a los datos (base de datos). Utiliza JPA/Hibernate para realizar operaciones CRUD sobre las entidades.(Pregunta repetida en el doc) 
+
+Entity: Representa las tablas de la base de datos. Son objetos mapeados con JPA (ORM) que reflejan el modelo de datos.
+
+DTO (Data Transfer Object): Son objetos planos usados para transferir datos entre el cliente y el servidor, ocultando detalles internos de las entidades y previniendo vulnerabilidades.
+
+Exception: Contiene clases personalizadas para el manejo de errores y un @ControllerAdvice para capturar excepciones globalmente y devolver mensajes de error formateados al cliente.
