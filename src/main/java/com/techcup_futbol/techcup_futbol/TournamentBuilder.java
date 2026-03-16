@@ -19,6 +19,8 @@ public interface TournamentBuilder {
     TournamentBuilder costPerTeam(double costPerTeam);
 
     TournamentBuilder description(String description);
+    
+    Tournament build();
 
     
 }
