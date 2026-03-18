@@ -1,6 +1,7 @@
 package com.techcup_futbol.techcup_futbol.PlayerDecorator;
 
 import java.util.List;
+import com.techcup_futbol.techcup_futbol.model.Player; 
 
 public class CaptainDecorator extends PlayerDecorator {
 
