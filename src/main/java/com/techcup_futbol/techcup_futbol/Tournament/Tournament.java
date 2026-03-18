@@ -163,4 +163,22 @@ public abstract class Tournament implements ObservableSubject{
         return id.equals(that.getId());
     }
 
+    public void changeState(TournamentState state) {
+    }
+
+    public TournamentState getState() {
+        return null;
+    }
+
+    // Getters y setters básicos
+
+    public String getName() {
+        return null;
+    }
+
+    public void setName(String name) {
+    }
+
+
 }
+
