@@ -1,4 +1,6 @@
-import java.util.Date;
+package com.techcup_futbol.techcup_futbol.Payment;
+
+import java.sql.Date;
 
 import com.techcup_futbol.techcup_futbol.Tournament.Tournament;
 
