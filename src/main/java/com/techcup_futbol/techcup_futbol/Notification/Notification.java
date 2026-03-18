@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.Observer;
+package com.techcup_futbol.techcup_futbol.Notification;
 import java.time.LocalDateTime;
 
 public class Notification  {

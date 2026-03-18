@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.TournamentBuilder;
+package com.techcup_futbol.techcup_futbol.Tournament;
 
 import java.time.LocalDateTime;
 import java.util.List;

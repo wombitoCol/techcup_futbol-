@@ -10,4 +10,3 @@ public interface PlayerComponent {
 
     boolean canPerformAction(String action);
 }
-
