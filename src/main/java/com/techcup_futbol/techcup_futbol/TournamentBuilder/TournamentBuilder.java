@@ -1,5 +1,4 @@
-package com.techcup_futbol.techcup_futbol;
-
+package com.techcup_futbol.techcup_futbol.TournamentBuilder;
 import java.time.LocalDateTime;
 
 public interface TournamentBuilder {

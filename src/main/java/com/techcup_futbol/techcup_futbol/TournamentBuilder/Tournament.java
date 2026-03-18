@@ -1,9 +1,12 @@
-package com.techcup_futbol.techcup_futbol;
+package com.techcup_futbol.techcup_futbol.TournamentBuilder;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
+import com.techcup_futbol.techcup_futbol.Observer.ObservableSubject;
+import com.techcup_futbol.techcup_futbol.Observer.Observer;
+import com.techcup_futbol.techcup_futbol.Observer.Team;
 
 public abstract class Tournament implements ObservableSubject{
     protected final String id;

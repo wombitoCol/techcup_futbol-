@@ -1,4 +1,5 @@
-package com.techcup_futbol.techcup_futbol;
+package com.techcup_futbol.techcup_futbol.TournamentBuilder;
+import com.techcup_futbol.techcup_futbol.TournamentBuilder.TournamentBuilder;
 
 public class DirectorTournament {
     

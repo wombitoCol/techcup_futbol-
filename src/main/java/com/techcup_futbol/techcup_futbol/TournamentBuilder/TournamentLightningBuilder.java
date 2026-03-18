@@ -1,7 +1,8 @@
-package com.techcup_futbol.techcup_futbol;
+package com.techcup_futbol.techcup_futbol.TournamentBuilder;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 
 public class TournamentLightningBuilder implements TournamentBuilder {
     

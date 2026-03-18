@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol;
+package com.techcup_futbol.techcup_futbol.Observer;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

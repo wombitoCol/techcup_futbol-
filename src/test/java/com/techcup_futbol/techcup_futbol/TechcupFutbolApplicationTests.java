@@ -7,6 +7,10 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.techcup_futbol.techcup_futbol.Observer.Team;
+import com.techcup_futbol.techcup_futbol.TournamentBuilder.TournamentLightning;
+import com.techcup_futbol.techcup_futbol.TournamentBuilder.TournamentLightningBuilder;
+
 @SpringBootTest
 class TechcupFutbolApplicationTests {
 
