@@ -1,3 +1,5 @@
+package com.techcup_futbol.techcup_futbol.Payment;
+
 import java.util.Date;
 
 import com.techcup_futbol.techcup_futbol.Tournament.Tournament;

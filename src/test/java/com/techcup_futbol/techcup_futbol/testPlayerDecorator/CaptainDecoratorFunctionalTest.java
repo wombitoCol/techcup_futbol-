@@ -1,4 +1,7 @@
+package com.techcup_futbol.techcup_futbol.testPlayerDecorator;
+
 import com.techcup_futbol.techcup_futbol.PlayerDecorator.CaptainDecorator;
+import com.techcup_futbol.techcup_futbol.PlayerDecorator.Player;
 import com.techcup_futbol.techcup_futbol.PlayerDecorator.PlayerComponent;
 import com.techcup_futbol.techcup_futbol.PlayerDecorator.PlayerDecorator;
 import com.techcup_futbol.techcup_futbol.PlayerDecorator.SportsProfile;
