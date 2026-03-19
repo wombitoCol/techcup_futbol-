@@ -8,6 +8,7 @@ import java.util.TreeMap;
 import com.techcup_futbol.techcup_futbol.Notification.ObservableSubject;
 import com.techcup_futbol.techcup_futbol.Notification.Observer;
 import com.techcup_futbol.techcup_futbol.Notification.Team;
+import com.techcup_futbol.techcup_futbol.TournamentState.TournamentState;
 
 public abstract class Tournament implements ObservableSubject{
     protected final String id;
@@ -22,6 +23,7 @@ public abstract class Tournament implements ObservableSubject{
     protected List<Observer> subscribers;
     protected List<Team> currentTeams;
     protected Team winner;
+    protected TournamentState state;
 
     public Tournament(String id, LocalDateTime startDate, LocalDateTime finishDate,
                       LocalDateTime finishDateToRegister, LocalDateTime importantDates,
