@@ -2,7 +2,7 @@ spring.application.name=techcup_futbol
 
 spring.datasource.url=jdbc:postgresql://localhost:5432/techcup_futbol
 spring.datasource.username=postgres
-spring.datasource.password=manchas
+spring.datasource.password=YOUR_PASSWORD_HERE
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
