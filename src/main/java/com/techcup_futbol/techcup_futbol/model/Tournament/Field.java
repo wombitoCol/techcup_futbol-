@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.Tournament;
+package com.techcup_futbol.techcup_futbol.model.Tournament;
 public class Field {
     
     private String name;

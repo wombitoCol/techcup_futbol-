@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.Tournament;
+package com.techcup_futbol.techcup_futbol.model.Tournament;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 
 public class TournamentLightningBuilder implements TournamentBuilder {
     
-    private String id;
+    private Long id;
     private LocalDateTime startDate;
     private LocalDateTime finishDate;
     private LocalDateTime finishDateToRegister;
@@ -19,7 +19,7 @@ public class TournamentLightningBuilder implements TournamentBuilder {
             costPerTeam, description);
     } 
 
-    public TournamentLightningBuilder id(String id){
+    public TournamentLightningBuilder id(Long id){
         this.id = id;
         return this;
     } 

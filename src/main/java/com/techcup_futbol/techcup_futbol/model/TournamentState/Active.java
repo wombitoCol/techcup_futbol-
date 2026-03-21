@@ -1,4 +1,6 @@
-package com.techcup_futbol.techcup_futbol.Tournament;
+package com.techcup_futbol.techcup_futbol.model.TournamentState;
+
+import com.techcup_futbol.techcup_futbol.model.Tournament.Tournament;
 
 public class Active implements TournamentState {
 

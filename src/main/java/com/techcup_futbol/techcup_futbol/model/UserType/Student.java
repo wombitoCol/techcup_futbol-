@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.entity;
+package com.techcup_futbol.techcup_futbol.model.UserType;
 
 import com.techcup_futbol.techcup_futbol.model.AcademicProgram;
 

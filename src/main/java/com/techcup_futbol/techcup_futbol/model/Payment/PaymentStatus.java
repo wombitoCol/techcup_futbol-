@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.Payment;
+package com.techcup_futbol.techcup_futbol.model.Payment;
 
 public enum PaymentStatus {
     PENDING,

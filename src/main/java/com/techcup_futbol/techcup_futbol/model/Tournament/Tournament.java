@@ -1,41 +1,62 @@
-package com.techcup_futbol.techcup_futbol.Tournament;
+package com.techcup_futbol.techcup_futbol.model.Tournament;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
-import com.techcup_futbol.techcup_futbol.Notification.ObservableSubject;
-import com.techcup_futbol.techcup_futbol.Notification.Observer;
-import com.techcup_futbol.techcup_futbol.Notification.Team;
-import com.techcup_futbol.techcup_futbol.TournamentState.TournamentState;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import java.math.BigDecimal;
+import com.techcup_futbol.techcup_futbol.model.Notification.ObservableSubject;
+import com.techcup_futbol.techcup_futbol.model.Notification.Observer;
+import com.techcup_futbol.techcup_futbol.model.TournamentState.TournamentState;
 
+@Entity
 public abstract class Tournament implements ObservableSubject{
-    protected final String id;
-    protected final LocalDateTime startDate;
-    protected final LocalDateTime finishDate;
-    protected final LocalDateTime finishDateToRegister;
-    protected final LocalDateTime importantDates;
-    protected final double costPerTeam;
-    protected final String description;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+
+    @Column(nullable = false)
+    protected LocalDateTime startDate;
+
+    @Column(nullable = true)
+    protected LocalDateTime finishDate;
+    @Column(nullable = false)
+    protected LocalDateTime finishDateToRegister;
+
+    @Column(nullable = false)
+    protected double costPerTeam;
+    @NotBlank
+    @Column(nullable = true)
+    protected String description;
+    @Column(nullable = false)
     protected int teamsNumber;
+    @ManyToMany
+    @JoinTable(name = "tournaments_teams",
+            joinColumns = @JoinColumn(name = "id_tournament", referencedColumnName = "id"),
+            inverseJoinColumns =  @JoinColumn(name = "id_team", referencedColumnName = "id"))
     protected TreeMap<String, Team> teams;
     protected List<Observer> subscribers;
     protected List<Team> currentTeams;
+    
+    @ManyToOne
+    @JoinColumn(name = "winner_id")
     protected Team winner;
+    @NotBlank
+    @Column(nullable = false)
     protected TournamentState state;
 
-    public Tournament(String id, LocalDateTime startDate, LocalDateTime finishDate,
+    public Tournament(Long id, LocalDateTime startDate, LocalDateTime finishDate,
                       LocalDateTime finishDateToRegister, LocalDateTime importantDates,
                       double costPerTeam, String description) {
         this.id = id;
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.finishDateToRegister = finishDateToRegister;
-        this.importantDates = importantDates;
         this.costPerTeam = costPerTeam;
         this.description = description;
-
         this.teamsNumber = 0;
         this.teams = new TreeMap<>();
         this.subscribers = new ArrayList<>();
@@ -85,7 +106,7 @@ public abstract class Tournament implements ObservableSubject{
 
 //========getters=======//
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -101,9 +122,6 @@ public abstract class Tournament implements ObservableSubject{
         return finishDateToRegister;
     }
 
-    public LocalDateTime getImportantDates() {
-        return importantDates;
-    }
 
     public double getCostPerTeam() {
         return costPerTeam;
@@ -180,6 +198,8 @@ public abstract class Tournament implements ObservableSubject{
 
     public void setName(String name) {
     }
+
+    protected abstract void setId(long andIncrement);
 
 
 }

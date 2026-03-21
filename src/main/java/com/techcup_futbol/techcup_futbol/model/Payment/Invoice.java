@@ -1,8 +1,8 @@
-package com.techcup_futbol.techcup_futbol.Payment;
+package com.techcup_futbol.techcup_futbol.model.Payment;
 
 import java.util.Date;
 
-import com.techcup_futbol.techcup_futbol.Tournament.Tournament;
+import com.techcup_futbol.techcup_futbol.model.Tournament.Tournament;
 
 public class Invoice {
 

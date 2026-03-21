@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.Notification;
+package com.techcup_futbol.techcup_futbol.model.Notification;
 public class Match {
     
 }

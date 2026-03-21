@@ -1,6 +1,12 @@
-package com.techcup_futbol.techcup_futbol.model;
+package com.techcup_futbol.techcup_futbol.model.User;
 
 import com.techcup_futbol.techcup_futbol.entity.*;
+import com.techcup_futbol.techcup_futbol.model.UserType.AdminStaff;
+import com.techcup_futbol.techcup_futbol.model.UserType.FamilyMember;
+import com.techcup_futbol.techcup_futbol.model.UserType.Graduate;
+import com.techcup_futbol.techcup_futbol.model.UserType.Professor;
+import com.techcup_futbol.techcup_futbol.model.UserType.Student;
+import com.techcup_futbol.techcup_futbol.model.UserType.UserProfile;
 
 public class UserFactory {
 

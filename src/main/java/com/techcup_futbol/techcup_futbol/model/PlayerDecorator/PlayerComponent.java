@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.PlayerDecorator;
+package com.techcup_futbol.techcup_futbol.model.PlayerDecorator;
 
 import java.util.List;
 

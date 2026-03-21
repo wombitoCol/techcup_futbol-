@@ -1,17 +1,20 @@
-package com.techcup_futbol.techcup_futbol.entity;
+package com.techcup_futbol.techcup_futbol.model.UserType;
 
-import com.techcup_futbol.techcup_futbol.model.AcademicProgram;
+import com.techcup_futbol.techcup_futbol.model.User.AcademicProgram;
+
 import jakarta.persistence.*;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "graduates")
 public class Graduate extends UserProfile {
 
-    @Column(nullable = false)
+    @Basic(optional = false)
     @Enumerated(EnumType.STRING)
     private AcademicProgram academicProgram;
 
-    @Column(nullable = false)
+    @Basic(optional = false)
     private int graduationYear;
 
     @Override

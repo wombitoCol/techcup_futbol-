@@ -1,9 +1,11 @@
 package com.techcup_futbol.techcup_futbol.service;
 
-import com.techcup_futbol.techcup_futbol.model.Tournament;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import com.techcup_futbol.techcup_futbol.model.Tournament.Tournament;
+import com.techcup_futbol.techcup_futbol.model.TournamentState.TournamentState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +19,7 @@ public class TournamentService {
     private final AtomicLong idGenerator = new AtomicLong(1);
 
     public Tournament create(Tournament tournament) {
-        tournament.setId(idGenerator.getAndIncrement());
-        tournament.setState("Draft");
         tournaments.add(tournament);
-        log.info("Tournament created: {}", tournament.getName());
         return tournament;
     }
 
@@ -28,7 +27,6 @@ public class TournamentService {
         for (int i = 0; i < tournaments.size(); i++) {
             Tournament current = tournaments.get(i);
             if (current.getId().equals(id) && !current.getState().equals("Finished")) {
-                newTournament.setId(id);
                 tournaments.set(i, newTournament);
                 log.info("Tournament updated ID: {}", id);
                 return Optional.of(newTournament);

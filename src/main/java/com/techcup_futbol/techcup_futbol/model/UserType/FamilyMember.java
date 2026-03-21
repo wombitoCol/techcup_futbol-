@@ -1,15 +1,17 @@
-package com.techcup_futbol.techcup_futbol.entity;
+package com.techcup_futbol.techcup_futbol.model.UserType;
 
-import jakarta.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "family_members")
 public class FamilyMember extends UserProfile {
 
-    @Column(nullable = false)
+    @Basic(optional = false)
     private String gmailEmail;
 
-    @Column(nullable = false)
+    @Basic(optional = false)
     private String relationship;
 
     @ManyToOne

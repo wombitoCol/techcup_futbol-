@@ -1,6 +1,8 @@
-package com.techcup_futbol.techcup_futbol.entity;
+package com.techcup_futbol.techcup_futbol.model.UserType;
 
-import jakarta.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Column;
 
 @Entity
 @Table(name = "admin_staff")
