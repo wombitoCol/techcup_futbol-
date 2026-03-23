@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol.model.User;
 
 import com.techcup_futbol.techcup_futbol.entity.*;
@@ -27,3 +28,4 @@ public class UserFactory {
         }
     }
 }
+*/

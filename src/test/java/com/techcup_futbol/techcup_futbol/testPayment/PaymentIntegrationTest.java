@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol.testPayment;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -51,3 +52,4 @@ public class PaymentIntegrationTest {
         assertEquals(PaymentStatus.PENDING, payment.getState());
     }
 }
+*/

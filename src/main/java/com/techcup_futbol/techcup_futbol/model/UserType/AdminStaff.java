@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol.model.UserType;
 
 import javax.persistence.Entity;
@@ -17,3 +18,4 @@ public class AdminStaff extends UserProfile {
     public String getArea() { return area; }
     public void setArea(String area) { this.area = area; }
 }
+*/

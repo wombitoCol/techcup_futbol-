@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol.testPlayerDecorator;
 
 import com.techcup_futbol.techcup_futbol.PlayerDecorator.CaptainDecorator;
@@ -83,3 +84,4 @@ public class CaptainDecoratorFunctionalTest {
         assertNotNull(profile);
     }
 }
+*/

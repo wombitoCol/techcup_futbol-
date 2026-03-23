@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol.model.UserType;
 
 import com.techcup_futbol.techcup_futbol.model.User.AcademicProgram;
@@ -26,3 +27,4 @@ public class Graduate extends UserProfile {
     public int getGraduationYear() { return graduationYear; }
     public void setGraduationYear(int graduationYear) { this.graduationYear = graduationYear; }
 }
+*/

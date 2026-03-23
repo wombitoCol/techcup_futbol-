@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol.controller;
 
 import com.techcup_futbol.techcup_futbol.model.User;
@@ -41,3 +42,4 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 }
+*/

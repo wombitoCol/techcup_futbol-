@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol.model.UserType;
 
 import javax.persistence.Basic;
@@ -30,3 +31,4 @@ public class FamilyMember extends UserProfile {
     public UserProfile getRelatedUser() { return relatedUser; }
     public void setRelatedUser(UserProfile relatedUser) { this.relatedUser = relatedUser; }
 }
+*/

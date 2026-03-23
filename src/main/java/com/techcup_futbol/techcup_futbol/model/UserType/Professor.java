@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol.model.UserType;
 
 import com.techcup_futbol.techcup_futbol.model.User.AcademicProgram;
@@ -32,3 +33,4 @@ public class Professor extends UserProfile {
     public ContractType getContractType() { return contractType; }
     public void setContractType(ContractType contractType) { this.contractType = contractType; }
 }
+*/

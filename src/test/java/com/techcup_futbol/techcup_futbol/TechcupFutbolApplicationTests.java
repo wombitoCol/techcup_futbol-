@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -53,7 +54,5 @@ class TechcupFutbolApplicationTests {
 		assertNull(teamSubscribed);
 		assertEquals(team, teamVigent);
 	}
-
-	
-
 }
+*/

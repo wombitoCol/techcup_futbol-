@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol.model.UserType;
 
 import com.techcup_futbol.techcup_futbol.model.AcademicProgram;
@@ -27,3 +28,4 @@ public class Student extends UserProfile {
     public int getSemester() { return semester; }
     public void setSemester(int semester) { this.semester = semester; }
 }
+*/

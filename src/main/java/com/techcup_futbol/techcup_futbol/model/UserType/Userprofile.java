@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol.model.UserType;
 import com.techcup_futbol.techcup_futbol.model.User.User;
 
@@ -68,3 +69,4 @@ public abstract class UserProfile {
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
 }
+*/
