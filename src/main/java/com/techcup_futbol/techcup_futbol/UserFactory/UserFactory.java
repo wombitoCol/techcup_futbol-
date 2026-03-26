@@ -1,10 +1,10 @@
-package com.techcup_futbol.techcup_futbol.model;
+package com.techcup_futbol.techcup_futbol.UserFactory;
 
-import com.techcup_futbol.techcup_futbol.entity.*;
+import com.techcup_futbol.techcup_futbol.User.*;
 
 public class UserFactory {
 
-    public static UserProfile createUser(String type) {
+    public static User createUser(String type) {
         switch (type.toUpperCase()) {
             case "STUDENT":
                 return new Student();

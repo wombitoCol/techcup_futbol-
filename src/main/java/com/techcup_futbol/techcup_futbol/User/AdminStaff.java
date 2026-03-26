@@ -1,12 +1,7 @@
-package com.techcup_futbol.techcup_futbol.entity;
+package com.techcup_futbol.techcup_futbol.User;
 
-import jakarta.persistence.*;
+public class AdminStaff extends User {
 
-@Entity
-@Table(name = "admin_staff")
-public class AdminStaff extends UserProfile {
-
-    @Column(nullable = false)
     private String area;
 
     @Override

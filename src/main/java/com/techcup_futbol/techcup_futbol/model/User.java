@@ -6,23 +6,25 @@ public class User {
     private String password;
     private String role;
     private boolean active;
+    private String name;
+    private String registrationNumber;
+    private String gender;
+    private String phone;
+    private String photo;
 
-    // Empty constructor required by Spring Boot 
     public User() {
         this.role = "player";
         this.active = true;
     }
 
-    // Constructor with parameters
     public User(Long id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.role = "player"; 
+        this.role = "player";
         this.active = true;
     }
 
-    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -37,4 +39,19 @@ public class User {
 
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public String getRegistrationNumber() { return registrationNumber; }
+    public void setRegistrationNumber(String registrationNumber) { this.registrationNumber = registrationNumber; }
+
+    public String getGender() { return gender; }
+    public void setGender(String gender) { this.gender = gender; }
+
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
+
+    public String getPhoto() { return photo; }
+    public void setPhoto(String photo) { this.photo = photo; }
 }

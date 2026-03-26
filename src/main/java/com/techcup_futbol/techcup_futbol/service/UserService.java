@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
@@ -26,6 +25,15 @@ public class UserService {
         return new ArrayList<>(users);
     }
 
+    public User findById(Long id) {
+        for (User u : users) {
+            if (u.getId().equals(id)) {
+                return u;
+            }
+        }
+        return null;
+    }
+
     public User create(User user) {
         user.setId(idGenerator.getAndIncrement());
         user.setRole("player");
@@ -35,19 +43,19 @@ public class UserService {
         return user;
     }
 
-    public Optional<User> updateRole(Long id, String role, boolean isAdmin) {
+    public User updateRole(Long id, String role, boolean isAdmin) {
         if (!isAdmin) {
             log.warn("Unauthorized role change attempt for user ID: {}", id);
-            return Optional.empty();
+            return null;
         }
         for (User u : users) {
             if (u.getId().equals(id)) {
                 u.setRole(role);
                 log.info("Role updated for user ID: {}", id);
-                return Optional.of(u);
+                return u;
             }
         }
-        return Optional.empty();
+        return null;
     }
 
     public boolean inactiveUser(Long id) {
