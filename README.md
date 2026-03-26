@@ -69,3 +69,11 @@ Entity: Representa las tablas de la base de datos. Son objetos mapeados con JPA 
 DTO (Data Transfer Object): Son objetos planos usados para transferir datos entre el cliente y el servidor, ocultando detalles internos de las entidades y previniendo vulnerabilidades.
 
 Exception: Contiene clases personalizadas para el manejo de errores y un @ControllerAdvice para capturar excepciones globalmente y devolver mensajes de error formateados al cliente.
+
+## Entidades Seleccionadas para JPA:
+
+User: Elegida para manejar las credenciales y el CRUD de los usuarios registrados, cubriendo los requisitos de Autenticación y Usuarios.
+
+Tournament: Elegida para manejar el CRUD y el ciclo de vida de los torneos.
+
+TournamentTeam: Elegida para representar los equipos participantes y guardar sus puntos, goles y estadísticas.
