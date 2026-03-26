@@ -1,8 +1,15 @@
-package com.techcup_futbol.techcup_futbol.entity;
+/* 
+package com.techcup_futbol.techcup_futbol.model.UserType;
+import com.techcup_futbol.techcup_futbol.model.User.User;
 
-import com.techcup_futbol.techcup_futbol.model.User;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name = "user_profiles")
@@ -13,7 +20,7 @@ public abstract class UserProfile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, lenght = 100)
     private String name;
 
     @Column(nullable = false, unique = true)
@@ -62,3 +69,4 @@ public abstract class UserProfile {
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
 }
+*/

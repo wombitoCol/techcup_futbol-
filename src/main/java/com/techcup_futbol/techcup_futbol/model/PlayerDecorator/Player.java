@@ -1,6 +1,8 @@
-package com.techcup_futbol.techcup_futbol.PlayerDecorator;
+package com.techcup_futbol.techcup_futbol.model.PlayerDecorator;
 
 import java.util.List;
+
+import com.techcup_futbol.techcup_futbol.model.User.User;
 
 public class Player implements PlayerComponent {
 

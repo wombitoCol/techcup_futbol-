@@ -1,11 +1,11 @@
-package com.techcup_futbol.techcup_futbol.Tournament;
+package com.techcup_futbol.techcup_futbol.model.Tournament;
 import java.time.LocalDateTime;
 
 public interface TournamentBuilder {
 
 
 
-    TournamentBuilder id(String id);
+    TournamentBuilder id(Long id);
 
     TournamentBuilder startDate(LocalDateTime startDate);
 

@@ -1,3 +1,4 @@
+/* 
 package com.techcup_futbol.techcup_futbol.controller;
 
 import com.techcup_futbol.techcup_futbol.model.User;
@@ -21,3 +22,4 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
     }
 }
+*/

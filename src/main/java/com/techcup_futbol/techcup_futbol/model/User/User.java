@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.model;
+package com.techcup_futbol.techcup_futbol.model.User;
 
 public class User {
     private Long id;

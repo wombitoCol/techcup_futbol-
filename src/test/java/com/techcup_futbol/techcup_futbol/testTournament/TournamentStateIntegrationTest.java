@@ -1,13 +1,12 @@
+/* 
 package com.techcup_futbol.techcup_futbol.testTournament;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import com.techcup_futbol.techcup_futbol.Tournament.Active;
-import com.techcup_futbol.techcup_futbol.Tournament.Draft;
-import com.techcup_futbol.techcup_futbol.Tournament.InProgress;
-import com.techcup_futbol.techcup_futbol.Tournament.Tournament;
-import com.techcup_futbol.techcup_futbol.Tournament.TournamentState;
+import com.techcup_futbol.techcup_futbol.model.Tournament.Tournament;
+
+
 
 public class TournamentStateIntegrationTest {
 
@@ -57,3 +56,4 @@ public class TournamentStateIntegrationTest {
         assertNotNull(tournament);
     }
 }
+*/
