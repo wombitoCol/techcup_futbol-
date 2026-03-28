@@ -1,10 +1,20 @@
 package com.techcup_futbol.techcup_futbol.model.User;
 
+import jakarta.persistence.*;
+@Entity
+@Table(name = "users")
 public class User {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String email;
+    @Column(nullable = false, unique = true)
+    private String email;   
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
     private String role;
+    @Column(nullable = false)
     private boolean active;
 
     // Empty constructor required by Spring Boot 
