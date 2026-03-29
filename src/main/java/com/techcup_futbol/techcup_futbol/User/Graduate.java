@@ -1,21 +1,8 @@
-/* 
-package com.techcup_futbol.techcup_futbol.model.UserType;
+package com.techcup_futbol.techcup_futbol.User;
 
-import com.techcup_futbol.techcup_futbol.model.User.AcademicProgram;
+public class Graduate extends User {
 
-import jakarta.persistence.*;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "graduates")
-public class Graduate extends UserProfile {
-
-    @Basic(optional = false)
-    @Enumerated(EnumType.STRING)
     private AcademicProgram academicProgram;
-
-    @Basic(optional = false)
     private int graduationYear;
 
     @Override
@@ -27,4 +14,3 @@ public class Graduate extends UserProfile {
     public int getGraduationYear() { return graduationYear; }
     public void setGraduationYear(int graduationYear) { this.graduationYear = graduationYear; }
 }
-*/

@@ -1,24 +1,9 @@
-/* 
-package com.techcup_futbol.techcup_futbol.model.UserType;
+package com.techcup_futbol.techcup_futbol.User;
 
-import com.techcup_futbol.techcup_futbol.model.User.AcademicProgram;
-import com.techcup_futbol.techcup_futbol.model.User.ContractType;
+public class Professor extends User {
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "professors")
-public class Professor extends UserProfile {
-
-    @Basic(optional = false)
-    @Enumerated(EnumType.STRING)
     private AcademicProgram academicProgram;
-
-    @Basic(optional = false)
     private String department;
-
-    @Basic(optional = false)
-    @Enumerated(EnumType.STRING)
     private ContractType contractType;
 
     @Override
@@ -33,4 +18,3 @@ public class Professor extends UserProfile {
     public ContractType getContractType() { return contractType; }
     public void setContractType(ContractType contractType) { this.contractType = contractType; }
 }
-*/
