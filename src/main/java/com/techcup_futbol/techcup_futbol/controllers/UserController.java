@@ -1,6 +1,8 @@
-/* 
-package com.techcup_futbol.techcup_futbol.controller;
+package com.techcup_futbol.techcup_futbol.controllers;
 
+
+import com.techcup_futbol.techcup_futbol.dto.Request.UserRequestDTO;
+import com.techcup_futbol.techcup_futbol.dto.Response.UserResponseDTO;
 import com.techcup_futbol.techcup_futbol.model.User.User;
 import com.techcup_futbol.techcup_futbol.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,25 +23,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    @Operation(summary = "Get all users")
-    public ResponseEntity<List<User>> getAll() {
-        return ResponseEntity.ok(userService.findAll());
-    }
-
     @PostMapping
-    @Operation(summary = "Create a new user", description = "Registers a user. By default, it is created with the 'player' role.")
-    public ResponseEntity<User> create(@RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.create(user));
-    }
-
-    @DeleteMapping("/{id}")
-    @Operation(summary = "Deactivate a user", description = "Users are not deleted from the database, only deactivated.")
-    public ResponseEntity<Void> inactive(@PathVariable Long id) {
-        if (userService.inactiveUser(id)) {
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserRequestDTO request) {
+        
+        UserResponseDTO response = userService.createUser(request);
+        
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }
 */

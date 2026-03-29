@@ -1,5 +1,7 @@
 package com.techcup_futbol.techcup_futbol.service;
 
+import com.techcup_futbol.techcup_futbol.dto.Request.UserRequestDTO;
+import com.techcup_futbol.techcup_futbol.dto.Response.UserResponseDTO;
 import com.techcup_futbol.techcup_futbol.model.User.User;
 import com.techcup_futbol.techcup_futbol.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,24 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    // Crear o guardar un usuario
-    public User create(User user) {
-        return userRepository.save(user);
+    // Método para registrar un nuevo usuario aplicando las reglas de negocio
+    public UserResponseDTO createUser(UserRequestDTO request) {
+        
+        // 1. Transformamos el DTO de entrada en un Modelo real (Entidad)
+        User newUser = new User();
+        newUser.setEmail(request.getEmail());
+        newUser.setPassword(request.getPassword());
+
+        // 2. Le decimos al Repositorio que lo guarde en PostgreSQL
+        User savedUser = userRepository.save(newUser);
+
+        // 3. Transformamos el Modelo guardado en un DTO de salida (¡Sin contraseña!)
+        UserResponseDTO response = new UserResponseDTO();
+        response.setId(savedUser.getId());
+        response.setEmail(savedUser.getEmail());
+
+        // 4. Devolvemos la respuesta segura
+        return response;
     }
 
     // Listar todos los usuarios

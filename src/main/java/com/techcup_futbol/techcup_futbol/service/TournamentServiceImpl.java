@@ -14,7 +14,7 @@ import com.techcup_futbol.techcup_futbol.service.TournamentService;
 import jakarta.transaction.Transactional;
 
 @Service
-public class TournamentServiceImpl {
+public class TournamentServiceImpl implements TournamentService {
 
     private final TournamentRepository tournamentRepository;
     private final TournamentMapper tournamentMapper;
@@ -25,6 +25,7 @@ public class TournamentServiceImpl {
         this.tournamentMapper = tournamentMapper;
     }
 
+    @Override
     @Transactional
     public TournamentResponseDTO createTournament(TournamentRequestDTO dto) {
 
@@ -47,6 +48,7 @@ public class TournamentServiceImpl {
         return tournamentMapper.toDto(saved);
     }
 
+    @Override
     @Transactional
     public TournamentResponseDTO updateTournament(Long id, TournamentRequestDTO dto) {
 
@@ -68,6 +70,7 @@ public class TournamentServiceImpl {
         return tournamentMapper.toDto(updated);
     }
 
+    @Override
     @Transactional
     public void deleteTournament(Long id) {
 

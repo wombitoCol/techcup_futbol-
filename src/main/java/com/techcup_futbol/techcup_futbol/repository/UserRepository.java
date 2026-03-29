@@ -1,5 +1,6 @@
 package com.techcup_futbol.techcup_futbol.repository;
 
+
 import com.techcup_futbol.techcup_futbol.model.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
