@@ -1,66 +1,41 @@
-/* 
 package com.techcup_futbol.techcup_futbol.service;
 
-import com.techcup_futbol.techcup_futbol.model.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.techcup_futbol.techcup_futbol.model.User.User;
+import com.techcup_futbol.techcup_futbol.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class UserService {
-    private static final Logger log = LoggerFactory.getLogger(UserService.class);
-    private final List<User> users = new ArrayList<>();
-    private final AtomicLong idGenerator = new AtomicLong(1);
 
-    public UserService() {
-        users.add(new User(idGenerator.getAndIncrement(), "demo@tournament.com", "1234"));
-        log.info("UserService initialized with dummy data.");
-    }
+    // El servicio llama al repositolistorio (la base de datos)
+    @Autowired
+    private UserRepository userRepository;
 
-    public List<User> findAll() {
-        log.debug("Fetching all users");
-        return new ArrayList<>(users);
-    }
-
+    // Crear o guardar un usuario
     public User create(User user) {
-        user.setId(idGenerator.getAndIncrement());
-        user.setRole("player");
-        user.setActive(true);
-        users.add(user);
-        log.info("User successfully created: {}", user.getEmail());
-        return user;
+        return userRepository.save(user);
     }
 
-    public Optional<User> updateRole(Long id, String role, boolean isAdmin) {
-        if (!isAdmin) {
-            log.warn("Unauthorized role change attempt for user ID: {}", id);
-            return Optional.empty();
-        }
-        for (User u : users) {
-            if (u.getId().equals(id)) {
-                u.setRole(role);
-                log.info("Role updated for user ID: {}", id);
-                return Optional.of(u);
-            }
-        }
-        return Optional.empty();
+    // Listar todos los usuarios
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 
-    public boolean inactiveUser(Long id) {
-        for (User u : users) {
-            if (u.getId().equals(id)) {
-                u.setActive(false);
-                log.info("User deactivated ID: {}", id);
-                return true;
-            }
-        }
-        log.warn("User to deactivate not found ID: {}", id);
-        return false;
+    // Buscar un usuario por su ID
+    public Optional<User> getById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    // Buscar por email (usando el método especial que hicimos en el repositorio)
+    public Optional<User> getByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+    
+    // Eliminar un usuario
+    public void delete(Long id) {
+        userRepository.deleteById(id);
     }
 }
-*/

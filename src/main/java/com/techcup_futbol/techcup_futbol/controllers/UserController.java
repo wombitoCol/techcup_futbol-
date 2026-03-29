@@ -1,7 +1,7 @@
 /* 
 package com.techcup_futbol.techcup_futbol.controller;
 
-import com.techcup_futbol.techcup_futbol.model.User;
+import com.techcup_futbol.techcup_futbol.model.User.User;
 import com.techcup_futbol.techcup_futbol.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
