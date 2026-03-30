@@ -26,12 +26,6 @@ public class TeamController {
         this.teamRepository = teamRepository;
     }
     
-    @PostMapping("")
-    public ResponseEntity<TeamResponseDTO> createTeam(@Valid @RequestBody TeamRequestDTO teamRequest) {
-        TeamResponseDTO teamResponse = TeamService.createTeam(teamRequest);
-        return ResponseEntity.status(HttpStatus.created).body(teamResponse);
-    }
-    
     @PostMapping
     public Team createTeam(@RequestBody Team team) {
         return teamRepository.save(team);

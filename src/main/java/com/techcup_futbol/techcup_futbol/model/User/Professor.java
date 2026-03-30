@@ -1,9 +1,20 @@
 package com.techcup_futbol.techcup_futbol.model.User;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "professors")
 public class Professor extends User {
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private AcademicProgram academicProgram;
+
+    @Column(nullable = false)
     private String department;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private ContractType contractType;
 
     @Override
