@@ -3,10 +3,10 @@ package com.techcup_futbol.techcup_futbol.service;
 
 import org.springframework.stereotype.Service;
 
+import com.mappers.TournamentMapper;
 import com.techcup_futbol.techcup_futbol.dto.Request.TournamentRequestDTO;
 import com.techcup_futbol.techcup_futbol.dto.Response.TournamentResponseDTO;
 import com.techcup_futbol.techcup_futbol.model.Tournament.Tournament;
-import com.techcup_futbol.techcup_futbol.model.Tournament.TournamentMapper;
 import com.techcup_futbol.techcup_futbol.model.Tournament.TournamentState;
 import com.techcup_futbol.techcup_futbol.repository.TournamentRepository;
 import com.techcup_futbol.techcup_futbol.service.TournamentService;
