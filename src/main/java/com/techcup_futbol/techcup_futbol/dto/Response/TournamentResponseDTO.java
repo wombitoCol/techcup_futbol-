@@ -1,10 +1,10 @@
 package com.techcup_futbol.techcup_futbol.dto.Response;
 
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.techcup_futbol.techcup_futbol.model.Tournament.Team;
+import com.techcup_futbol.techcup_futbol.model.Tournament.TournamentState;
 
 import lombok.Builder;
 import lombok.Data;
@@ -15,12 +15,19 @@ public class TournamentResponseDTO {
 
     private Long id;
     private String name;
-    private String state;
+    private TournamentState state;
+    private LocalDateTime startDate;
+    private LocalDateTime finishDate;
+    private LocalDateTime finishDateToRegister;
+    private String type;
+    private double costPerTeam;
     private String description;
     private int teamsNumber;
-    private LocalDateTime startDate;
-    private LocalDateTime finishDateToRegister;
-    private Double costPerTeam;
+    private List<Team> teams;
     private Team winner;
+    
+
+
+    
 
 }

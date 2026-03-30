@@ -2,8 +2,6 @@ package com.techcup_futbol.techcup_futbol.dto.Response;
 
 
 import java.time.LocalDate;
-
-import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
 

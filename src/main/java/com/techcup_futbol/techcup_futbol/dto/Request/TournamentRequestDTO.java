@@ -1,6 +1,14 @@
 package com.techcup_futbol.techcup_futbol.dto.Request;
 import java.time.LocalDateTime;
 
+import com.techcup_futbol.techcup_futbol.model.Tournament.Tournament;
+import com.techcup_futbol.techcup_futbol.model.Tournament.TournamentState;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
 public class TournamentRequestDTO {
 
     private String name;
@@ -8,49 +16,8 @@ public class TournamentRequestDTO {
     private LocalDateTime finishDateToRegister;
     private double costPerTeam;
     private String description;
+    private TournamentState state;
+    private String type;
 
-    // void constructor
-    public TournamentRequestDTO() {}
 
-    // getters
-    public String getName() {
-        return name;
-    }
-
-    public LocalDateTime getStartDate() {
-        return startDate;
-    }
-
-    public LocalDateTime getFinishDateToRegister() {
-        return finishDateToRegister;
-    }
-
-    public double getCostPerTeam() {
-        return costPerTeam;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    // setters 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
-    }
-
-    public void setFinishDateToRegister(LocalDateTime finishDateToRegister) {
-        this.finishDateToRegister = finishDateToRegister;
-    }
-
-    public void setCostPerTeam(double costPerTeam) {
-        this.costPerTeam = costPerTeam;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }
