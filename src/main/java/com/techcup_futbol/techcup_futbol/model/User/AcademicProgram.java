@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.User;
+package com.techcup_futbol.techcup_futbol.model.User;
 
 public enum AcademicProgram {
     SYSTEMS_ENGINEERING,

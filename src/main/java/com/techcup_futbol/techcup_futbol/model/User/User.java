@@ -1,55 +1,26 @@
-package com.techcup_futbol.techcup_futbol.model;
+package com.techcup_futbol.techcup_futbol.model.User;
 
-import jakarta.persistence.*;
 import java.time.LocalDate;
 
-@ManyToMany
-@JoinTable(
-        name = "user_tournament",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "tournament_id"))
-private Set<Tournament> tournaments = new HashSet<>();
+public abstract class User {
 
-
-@Entity
-@Table(name = "users")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false, unique = true)
-    private String email;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String role;
-
-    @Column(nullable = false)
-    private boolean active;
-
-    private String name;
-    private String registrationNumber;
-    private LocalDate birthDate;
-    private String gender;
-    private String phone;
-    private String photo;
+    protected Long id;
+    protected String email;
+    protected String password;
+    protected String role;
+    protected boolean active;
+    protected String name;
+    protected LocalDate birthDate;
+    protected String gender;
+    protected Long phoneNumber;
+    protected String photo;
 
     public User() {
         this.role = "player";
         this.active = true;
     }
 
-    public User(Long id, String email, String password) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.role = "player";
-        this.active = true;
-    }
+    public abstract String getAffiliationType();
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -69,8 +40,6 @@ public class User {
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
-    public String getRegistrationNumber() { return registrationNumber; }
-    public void setRegistrationNumber(String registrationNumber) { this.registrationNumber = registrationNumber; }
 
     public LocalDate getBirthDate() { return birthDate; }
     public void setBirthDate(LocalDate birthDate) { this.birthDate = birthDate; }
@@ -78,8 +47,8 @@ public class User {
     public String getGender() { return gender; }
     public void setGender(String gender) { this.gender = gender; }
 
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
+    public Long getPhone() { return phoneNumber; }
+    public void setPhone(Long phone) { this.phoneNumber = phone; }
 
     public String getPhoto() { return photo; }
     public void setPhoto(String photo) { this.photo = photo; }

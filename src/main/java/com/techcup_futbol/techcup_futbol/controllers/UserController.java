@@ -17,6 +17,7 @@ import java.util.List;
 @RequestMapping("/api/users")
 @Tag(name = "Users", description = "CRUD operations related to users")
 public class UserController {
+    
     private final UserService userService;
 
     public UserController(UserService userService) {
@@ -31,4 +32,3 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }
-*/

@@ -26,11 +26,9 @@ public class Team implements ObservableSubject, Observer {
     @Column(nullable = false, unique = true)
     private String name;
     
-    // Esta relación la manejas con Tournament (no la modifiques)
     @ManyToMany(mappedBy = "teams")
     private List<Tournament> tournaments = new ArrayList<>();
     
-    // IMPORTANTE: @Transient evita que JPA intente guardar esto en BD
     @Transient
     private List<Observer> subscribers = new ArrayList<>();
     
