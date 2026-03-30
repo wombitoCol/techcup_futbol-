@@ -1,4 +1,4 @@
-package com.mappers;
+package com.techcup_futbol.techcup_futbol.mappers;
 
 import org.springframework.stereotype.Component;
 
