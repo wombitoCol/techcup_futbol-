@@ -1,14 +1,29 @@
 package com.techcup_futbol.techcup_futbol.model.User;
 
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
+
+    @Column(nullable = false, unique = true)
     protected String email;
+
+    @Column(nullable = false)
     protected String password;
+
+    @Column(nullable = false)
     protected String role;
+
+    @Column(nullable = false)
     protected boolean active;
+
     protected String name;
     protected LocalDate birthDate;
     protected String gender;
@@ -39,7 +54,6 @@ public abstract class User {
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
-
 
     public LocalDate getBirthDate() { return birthDate; }
     public void setBirthDate(LocalDate birthDate) { this.birthDate = birthDate; }
