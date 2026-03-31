@@ -16,7 +16,12 @@ public class UserRepositoryTest {
     @Test
     public void testCreateAndSaveUser() {
         // 1. Preparamos un usuario de prueba
-        User user = new User();
+        User user = new User() {
+            @Override
+            public String getAffiliationType() {
+                return "default";
+            }
+        };
         user.setEmail("prueba@techcup.com");
         user.setPassword("secreta123");
 

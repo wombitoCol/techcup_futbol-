@@ -33,7 +33,7 @@ public interface TournamentRepository extends JpaRepository<Tournament, Long> {
     List<Tournament> findByDescriptionContainingIgnoreCase(String description);
     List<Tournament> findByTeamsNumber( int teamsNumber); 
     List<Tournament> findByTeams(List<Team> teams);
-    List<Tournament> findByWiner(Team winner);
+    List<Tournament> findByWinner(Team team);
     List<Tournament> findByState( TournamentState state);
 
 }

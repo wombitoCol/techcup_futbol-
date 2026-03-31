@@ -1,6 +1,4 @@
-package com.techcup_futbol.techcup_futbol.UserFactory;
-
-import com.techcup_futbol.techcup_futbol.model.User.*;
+package com.techcup_futbol.techcup_futbol.model.User;
 
 public class UserFactory {
 
