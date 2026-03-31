@@ -1,6 +1,7 @@
 package com.techcup_futbol.techcup_futbol.controllers;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import com.techcup_futbol.techcup_futbol.dto.Request.TeamRequestDTO;
 import com.techcup_futbol.techcup_futbol.dto.Response.TeamResponseDTO;
 import com.techcup_futbol.techcup_futbol.model.Tournament.Team;
 import com.techcup_futbol.techcup_futbol.repository.TeamRepository;
+import com.techcup_futbol.techcup_futbol.service.TeamService;
 
 import jakarta.validation.Valid;
 
@@ -26,9 +28,10 @@ public class TeamController {
         this.teamRepository = teamRepository;
     }
     
-    @PostMapping
-    public Team createTeam(@RequestBody Team team) {
-        return teamRepository.save(team);
+    @PostMapping("")
+    public ResponseEntity<TeamResponseDTO> createTeam(@Valid @RequestBody TeamRequestDTO teamRequest) {
+        TeamResponseDTO teamResponse = TeamService.createTeam(teamRequest);
+        return ResponseEntity.status(HttpStatus.created).body(teamResponse);
     }
     
     @GetMapping("/{id}")

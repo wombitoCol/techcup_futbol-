@@ -61,6 +61,10 @@ public abstract class Tournament {
     @Column(nullable = false)
     protected TournamentState state;
 
+    @Column(nullable = false)
+    protected String type;
+
+
     public Tournament() {}
 
     public Long getId() { return id; }
