@@ -1,22 +1,35 @@
 package com.techcup_futbol.techcup_futbol.dto.Response;
 
-
-import java.time.LocalDate;
-import lombok.Builder;
-import lombok.Data;
-
-@Data
-@Builder
 public class UserResponseDTO {
-
+    
     private Long id;
-    private String email;
-    private String role;
-    private boolean active;
     private String name;
-    private LocalDate birthDate;
-    private String gender;
-    private Long phoneNumber;
+    private String email;
 
+    public UserResponseDTO() {
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
