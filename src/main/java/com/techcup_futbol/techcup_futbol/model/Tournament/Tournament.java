@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.techcup_futbol.techcup_futbol.model.Payment.Invoice;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -17,6 +19,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -63,6 +66,9 @@ public abstract class Tournament {
 
     @Column(nullable = false)
     protected String type;
+
+    @OneToMany(mappedBy = "tournament")
+    protected List<Invoice> invoice;
 
 
     public Tournament() {}

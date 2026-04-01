@@ -2,8 +2,9 @@ package com.techcup_futbol.techcup_futbol.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.techcup_futbol.techcup_futbol.model.Payment.Invoice;
 import com.techcup_futbol.techcup_futbol.model.User.User;
-import com.techcup_futbol.techcup_futbol.model.Invoice.Invoice;
 import com.techcup_futbol.techcup_futbol.dto.Request.InvoiceRequestDTO;
 import com.techcup_futbol.techcup_futbol.dto.Response.InvoiceResponseDTO;
 import com.techcup_futbol.techcup_futbol.mappers.InvoiceMapper;

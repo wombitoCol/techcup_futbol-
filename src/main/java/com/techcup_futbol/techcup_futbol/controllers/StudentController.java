@@ -1,0 +1,56 @@
+package com.techcup_futbol.techcup_futbol.controllers;
+
+
+import com.techcup_futbol.techcup_futbol.dto.Request.TournamentRequestDTO;
+import com.techcup_futbol.techcup_futbol.dto.Request.UserRequestDTO;
+import com.techcup_futbol.techcup_futbol.dto.Response.TournamentResponseDTO;
+import com.techcup_futbol.techcup_futbol.dto.Response.UserResponseDTO;
+import com.techcup_futbol.techcup_futbol.model.User.User;
+import com.techcup_futbol.techcup_futbol.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController 
+@RequestMapping("/api/users")
+@Tag(name = "Users", description = "CRUD operations related to users")
+public class StudentController {
+    
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
+    @PostMapping
+    public ResponseEntity<UserResponseDTO> createStudent(@RequestBody UserRequestDTO request) {
+        
+        UserResponseDTO response = userService.createUser(request);
+        
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> updateStudent(
+            @PathVariable Long id,
+            @Valid @RequestBody TournamentRequestDTO dto) {
+        TournamentResponseDTO updated = userService.updateUser(id, dto);
+        return ResponseEntity.ok(updated);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
+        tournamentService.deleteTournament(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
+
+}

@@ -4,11 +4,15 @@ import java.time.LocalDateTime;
 import com.techcup_futbol.techcup_futbol.model.Tournament.Tournament;
 import com.techcup_futbol.techcup_futbol.model.Tournament.TournamentState;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class TournamentRequestDTO {
 
     private String name;

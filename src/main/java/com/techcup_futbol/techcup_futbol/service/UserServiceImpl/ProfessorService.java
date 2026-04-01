@@ -1,0 +1,68 @@
+package com.techcup_futbol.techcup_futbol.service.UserServiceImpl;
+
+import org.springframework.stereotype.Service;
+
+import com.techcup_futbol.techcup_futbol.dto.Request.UserRequestDTO;
+import com.techcup_futbol.techcup_futbol.dto.Response.UserResponseDTO;
+import com.techcup_futbol.techcup_futbol.exception.ResourceNotFoundException;
+import com.techcup_futbol.techcup_futbol.mappers.UserMapper;
+import com.techcup_futbol.techcup_futbol.model.User.User;
+import com.techcup_futbol.techcup_futbol.model.User.UserType;
+import com.techcup_futbol.techcup_futbol.repository.UserRepository;
+import com.techcup_futbol.techcup_futbol.service.UserService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class ProfessorService implements UserService {
+
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
+
+    @Override
+    public UserResponseDTO createUser(UserRequestDTO request) {
+
+        User newUser = User.builder()
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .name(request.getName())
+                .type(UserType.PROFESSOR)
+                .birthDate(request.getBirthDate())
+                .gender(request.getGender())
+                .phoneNumber(request.getPhone())
+                .photo(request.getPhoto())
+                .academicProgram(request.getAcademicProgram())
+                .department(request.getDepartment())
+                .contractType(request.getContractType())
+                .build();
+
+        User savedUser = userRepository.save(newUser);
+        return userMapper.toDto(savedUser);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        if (!userRepository.existsById(id)) {
+            throw ResourceNotFoundException.create("ID", id);
+        }
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public UserResponseDTO updateUser(Long id, UserRequestDTO dto) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> ResourceNotFoundException.create("ID", id));
+
+        user.setPassword(dto.getPassword());
+        user.setDepartment(dto.getDepartment());
+        user.setContractType(dto.getContractType());
+        user.setAcademicProgram(dto.getAcademicProgram());
+        user.setActive(dto.isActive());
+        user.setPhoneNumber(dto.getPhone());
+        user.setPhoto(dto.getPhoto());
+
+        User updated = userRepository.save(user);
+        return userMapper.toDto(updated);
+    }
+}

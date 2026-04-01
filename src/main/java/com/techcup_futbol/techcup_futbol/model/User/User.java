@@ -1,12 +1,19 @@
 package com.techcup_futbol.techcup_futbol.model.User;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
+
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Indexed;
+
 @Entity
+@Data
+@Builder
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,52 +25,55 @@ public abstract class User {
     @Column(nullable = false)
     protected String password;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    protected String role;
+    protected UserType type;
 
     @Column(nullable = false)
-    protected boolean active;
+    protected boolean isActive;
 
+    @Column(nullable = false)
     protected String name;
+    @Column(nullable = false)
     protected LocalDate birthDate;
+    
+    @Column(nullable = false)
     protected String gender;
+
+    @Column(nullable = false)
     protected Long phoneNumber;
+
+    @Column(nullable = true)
     protected String photo;
 
-    public User() {
-        this.role = "player";
-        this.active = true;
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
+    private AcademicProgram academicProgram;
 
-    public abstract String getAffiliationType();
+    @Column(nullable = true)
+    private int semester;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    @Column(nullable = true)
+    private String department;
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
+    private ContractType contractType;
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+    @Column(nullable = true)
+    private int graduationYear;
 
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    @Column(nullable = true)
+    private String gmailEmail;
 
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
+    @ManyToOne
+    @JoinColumn(name = "related_user_id")
+    private User relatedUser;
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    @Column(nullable = true)
+    private String area;
 
-    public LocalDate getBirthDate() { return birthDate; }
-    public void setBirthDate(LocalDate birthDate) { this.birthDate = birthDate; }
 
-    public String getGender() { return gender; }
-    public void setGender(String gender) { this.gender = gender; }
+    public UserType getAffiliationType(){return type;};
 
-    public Long getPhone() { return phoneNumber; }
-    public void setPhone(Long phone) { this.phoneNumber = phone; }
-
-    public String getPhoto() { return photo; }
-    public void setPhoto(String photo) { this.photo = photo; }
 }

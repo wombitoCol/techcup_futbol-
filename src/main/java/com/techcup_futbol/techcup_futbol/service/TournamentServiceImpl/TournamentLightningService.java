@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.service;
+package com.techcup_futbol.techcup_futbol.service.TournamentServiceImpl;
 
 
 import org.springframework.stereotype.Service;
@@ -14,12 +14,12 @@ import com.techcup_futbol.techcup_futbol.service.TournamentService;
 import jakarta.transaction.Transactional;
 
 @Service
-public class TournamentServiceImpl implements TournamentService {
+public class TournamentLightningService implements TournamentService {
 
     private final TournamentRepository tournamentRepository;
     private final TournamentMapper tournamentMapper;
 
-    public TournamentServiceImpl(TournamentRepository tournamentRepository,
+    public TournamentLightningService(TournamentRepository tournamentRepository,
                                  TournamentMapper tournamentMapper) {
         this.tournamentRepository = tournamentRepository;
         this.tournamentMapper = tournamentMapper;

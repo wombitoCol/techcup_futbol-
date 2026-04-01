@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.techcup_futbol.techcup_futbol.model.Notification.ObservableSubject;
 import com.techcup_futbol.techcup_futbol.model.Notification.Observer;
+import com.techcup_futbol.techcup_futbol.model.Payment.Invoice;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -31,6 +33,9 @@ public class Team implements ObservableSubject, Observer {
     
     @Transient
     private List<Observer> subscribers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "team")
+    protected List<Invoice> invoice;
     
     public Team() {}
     
