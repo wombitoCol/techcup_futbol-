@@ -7,6 +7,8 @@ import com.techcup_futbol.techcup_futbol.dto.Response.TournamentResponseDTO;
 import com.techcup_futbol.techcup_futbol.dto.Response.UserResponseDTO;
 import com.techcup_futbol.techcup_futbol.model.User.User;
 import com.techcup_futbol.techcup_futbol.service.UserService;
+import com.techcup_futbol.techcup_futbol.service.UserServiceImpl.StudentService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -31,7 +33,7 @@ public class StudentController {
     @PostMapping
     public ResponseEntity<UserResponseDTO> createStudent(@RequestBody UserRequestDTO request) {
         
-        UserResponseDTO response = userService.createUser(request);
+        UserResponseDTO response = studentService.createUser(request);
         
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
@@ -40,14 +42,14 @@ public class StudentController {
     @PutMapping("/{id}")
     public ResponseEntity<UserResponseDTO> updateStudent(
             @PathVariable Long id,
-            @Valid @RequestBody TournamentRequestDTO dto) {
-        TournamentResponseDTO updated = userService.updateUser(id, dto);
+            @Valid @RequestBody UserRequestDTO dto) {
+        UserResponseDTO updated = studentService.updateUser(id, dto);
         return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
-        tournamentService.deleteTournament(id);
+        studentService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
 
