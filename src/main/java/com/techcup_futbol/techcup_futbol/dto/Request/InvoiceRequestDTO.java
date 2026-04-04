@@ -17,5 +17,6 @@ public class InvoiceRequestDTO implements Serializable {
     private String description;
     private Tournament tournament;
     private Team team;
+    
 
 }
