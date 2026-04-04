@@ -1,40 +1,64 @@
 package com.techcup_futbol.techcup_futbol.service;
 
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.time.LocalDateTime;
 
-import com.techcup_futbol.techcup_futbol.model.Payment.Invoice;
-import com.techcup_futbol.techcup_futbol.model.User.User;
+import org.springframework.stereotype.Service;
+
 import com.techcup_futbol.techcup_futbol.dto.Request.InvoiceRequestDTO;
 import com.techcup_futbol.techcup_futbol.dto.Response.InvoiceResponseDTO;
+import com.techcup_futbol.techcup_futbol.exception.ResourceNotFoundException;
 import com.techcup_futbol.techcup_futbol.mappers.InvoiceMapper;
+import com.techcup_futbol.techcup_futbol.model.Payment.Invoice;
+import com.techcup_futbol.techcup_futbol.model.Tournament.Tournament;
+import com.techcup_futbol.techcup_futbol.model.User.User;
 import com.techcup_futbol.techcup_futbol.repository.InvoiceRepository;
+import com.techcup_futbol.techcup_futbol.repository.TournamentRepository;
 import com.techcup_futbol.techcup_futbol.repository.UserRepository;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class InvoiceService {
-    
-    @Autowired 
-    private InvoiceRepository invoiceRepository;
-    
-    @Autowired 
-    private UserRepository userRepository;
-    
-    @Autowired 
-    private InvoiceMapper invoiceMapper;
 
-    public InvoiceResponseDTO createInvoice(InvoiceRequestDTO dto) {
-        // 1. Buscamos al usuario por el ID que viene en el DTO
-        User user = userRepository.findById(dto.getUserId())
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    private final InvoiceRepository invoiceRepository;
+    private final InvoiceMapper invoiceMapper;
 
-        // 2. Usamos el mapper para convertir DTO a Entidad
-        Invoice invoice = invoiceMapper.toEntity(dto, user);
 
-        // 3. Guardamos en la base de datos
+    public InvoiceResponseDTO createInvoice(InvoiceRequestDTO request) {
+
+
+        Invoice invoice = new Invoice();
+        invoice.setAmount(request.getAmount());
+        invoice.setDescription(request.getDescription());
+        invoice.setCreatedAt(LocalDateTime.now());
+        invoice.setTeam(request.getTeam());
+        invoice.setTournament(request.getTournament());
+
         Invoice savedInvoice = invoiceRepository.save(invoice);
 
-        // 4. Devolvemos el ResponseDTO
         return invoiceMapper.toDto(savedInvoice);
+    }
+
+    public InvoiceResponseDTO updateInvoice(Long id, InvoiceRequestDTO dto) {
+
+        Invoice invoice = invoiceRepository.findById(id)
+                .orElseThrow(() -> ResourceNotFoundException.create("Invoice ID", id));
+
+
+        invoice.setAmount(dto.getAmount());
+        invoice.setDescription(dto.getDescription());
+        invoice.setTeam(dto.getTeam());
+        invoice.setTournament(dto.getTournament());
+
+        Invoice updated = invoiceRepository.save(invoice);
+        return invoiceMapper.toDto(updated);
+    }
+
+    public void deleteInvoice(Long id) {
+        if (!invoiceRepository.existsById(id)) {
+            throw ResourceNotFoundException.create("Invoice ID", id);
+        }
+        invoiceRepository.deleteById(id);
     }
 }

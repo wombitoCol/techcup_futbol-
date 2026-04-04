@@ -2,23 +2,20 @@ package com.techcup_futbol.techcup_futbol.dto.Request;
 
 import java.io.Serializable;
 
+import com.techcup_futbol.techcup_futbol.model.Tournament.Team;
+import com.techcup_futbol.techcup_futbol.model.Tournament.Tournament;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+@AllArgsConstructor
 public class InvoiceRequestDTO implements Serializable {
     private Double amount;
     private String description;
-    private Long userId; // ID del dueño de la factura
+    private Tournament tournament;
+    private Team team;
 
-    public InvoiceRequestDTO() {}
-
-    public InvoiceRequestDTO(Double amount, String description, Long userId) {
-        this.amount = amount;
-        this.description = description;
-        this.userId = userId;
-    }
-
-    public Double getAmount() { return amount; }
-    public void setAmount(Double amount) { this.amount = amount; }
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-    public Long getUserId() { return userId; }
-    public void setUserId(Long userId) { this.userId = userId; }
 }

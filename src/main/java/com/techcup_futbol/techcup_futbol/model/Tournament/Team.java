@@ -35,7 +35,7 @@ public class Team implements ObservableSubject, Observer {
     private List<Observer> subscribers = new ArrayList<>();
 
     @OneToMany(mappedBy = "team")
-    protected List<Invoice> invoice;
+    private List<Invoice> invoice;
     
     public Team() {}
     

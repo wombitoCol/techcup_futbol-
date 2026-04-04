@@ -1,5 +1,6 @@
 package com.techcup_futbol.techcup_futbol.model.Payment;
 
+import com.techcup_futbol.techcup_futbol.model.Tournament.Team;
 import com.techcup_futbol.techcup_futbol.model.Tournament.Tournament;
 import com.techcup_futbol.techcup_futbol.model.User.User;
 import jakarta.persistence.*;
@@ -30,6 +31,12 @@ public class Invoice {
     @JoinColumn(name = "tournament_id", nullable = false)
     private Tournament tournament;
 
+    @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
+    private Team team;
+
+
+
 
 
     public Invoice() {}
@@ -48,4 +55,19 @@ public class Invoice {
 
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
+
+    public Tournament getTournament() { return tournament; }
+    public void setTournament(Tournament tournament) { this.tournament = tournament; }
+
+    public Long getTournamentId() {
+        return tournament != null ? tournament.getId() : null;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
 }
