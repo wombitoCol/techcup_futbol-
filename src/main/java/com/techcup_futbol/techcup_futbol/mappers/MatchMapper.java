@@ -1,10 +1,11 @@
 package com.techcup_futbol.techcup_futbol.mappers;
 
+import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
 import com.techcup_futbol.techcup_futbol.dto.Response.MatchResponseDTO;
 import com.techcup_futbol.techcup_futbol.model.Match.Match;
-@Component
+@Mapper(componentModel = "spring")
 public class MatchMapper {
  
     public MatchResponseDTO toDto(Match match) {

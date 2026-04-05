@@ -1,8 +1,10 @@
 package com.techcup_futbol.techcup_futbol.model.User;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Indexed;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)

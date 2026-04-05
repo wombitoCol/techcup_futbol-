@@ -54,5 +54,10 @@ public class StudentController {
     }
 
 
+    @GetMapping
+        public ResponseEntity<List<UserResponseDTO>> getAllStudents() {
+            List<UserResponseDTO> students = studentService.getAllUsers();
+            return ResponseEntity.ok(students);
+        }
 
 }
