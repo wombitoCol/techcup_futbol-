@@ -27,7 +27,7 @@ public interface TournamentRepository extends JpaRepository<Tournament, Long> {
     Optional<Tournament> findByName(String name);
 
     List<Tournament> findByStartDate(LocalDateTime time);
-    List<Tournament> findByFinishDate(LocalDateTime time);
+    List<Tournament> findByFinishDate(LocalDateTime time); 
     List<Tournament> findByFinishDateToRegister(LocalDateTime time);
     List<Tournament> findByCostPerTeam( double costPerTeam);
     List<Tournament> findByDescriptionContainingIgnoreCase(String description);
