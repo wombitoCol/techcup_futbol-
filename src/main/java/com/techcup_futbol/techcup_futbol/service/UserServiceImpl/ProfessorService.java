@@ -1,5 +1,7 @@
 package com.techcup_futbol.techcup_futbol.service.UserServiceImpl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.techcup_futbol.techcup_futbol.dto.Request.UserRequestDTO;
@@ -64,5 +66,13 @@ public class ProfessorService implements UserService {
 
         User updated = userRepository.save(user);
         return userMapper.toDto(updated);
+    }
+
+    @Override
+    public List<UserResponseDTO> getAllUsers() {
+        List<User> professors = userRepository.findByType(UserType.PROFESSOR);
+        return professors.stream()
+                .map(userMapper::toDto)
+                .toList();
     }
 }

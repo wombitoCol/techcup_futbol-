@@ -1,6 +1,7 @@
 package com.techcup_futbol.techcup_futbol.service.UserServiceImpl;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,6 +68,14 @@ public class StudentService implements UserService {
         user.setPhoto(dto.getPhoto());
         User updated = userRepository.save(user);
         return userMapper.toDto(updated);
+    }
+
+    @Override
+    public List<UserResponseDTO> getAllUsers() {
+        List<User> students = userRepository.findByType(UserType.STUDENT);
+        return students.stream()
+                .map(userMapper::toDto)
+                .toList();
     }
 
 

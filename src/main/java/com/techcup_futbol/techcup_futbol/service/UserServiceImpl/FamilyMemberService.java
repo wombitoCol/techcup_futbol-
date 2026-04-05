@@ -1,5 +1,7 @@
 package com.techcup_futbol.techcup_futbol.service.UserServiceImpl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.techcup_futbol.techcup_futbol.dto.Request.UserRequestDTO;
@@ -62,5 +64,13 @@ public class FamilyMemberService implements UserService {
 
         User updated = userRepository.save(user);
         return userMapper.toDto(updated);
+    }
+
+    @Override
+    public List<UserResponseDTO> getAllUsers() {
+        List<User> familyMembers = userRepository.findByType(UserType.FAMILY_MEMBER);
+        return familyMembers.stream()
+                .map(userMapper::toDto)
+                .toList();
     }
 }

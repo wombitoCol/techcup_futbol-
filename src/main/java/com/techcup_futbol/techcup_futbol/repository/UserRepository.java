@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.techcup_futbol.techcup_futbol.model.User.User;
+import com.techcup_futbol.techcup_futbol.model.User.UserType;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByEmail(String email); 
-    List<User> findByRole(String role);
+    List<User> findByType(UserType role);
     List<User> findByGender(String gender);
     List<User> findByActive(Boolean isActive);
     Optional<User> findByNameContainingIgnoreCase(String name);
