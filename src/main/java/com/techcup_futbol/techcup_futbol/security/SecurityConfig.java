@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.config;
+package com.techcup_futbol.techcup_futbol.security;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.context.annotation.Bean;

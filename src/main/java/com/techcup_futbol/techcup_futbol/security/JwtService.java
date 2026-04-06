@@ -1,5 +1,4 @@
-package com.techcup_futbol.techcup_futbol.config;
-
+package com.techcup_futbol.techcup_futbol.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

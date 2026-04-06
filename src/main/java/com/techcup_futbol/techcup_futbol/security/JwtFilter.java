@@ -1,4 +1,4 @@
-package com.techcup_futbol.techcup_futbol.config;
+package com.techcup_futbol.techcup_futbol.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

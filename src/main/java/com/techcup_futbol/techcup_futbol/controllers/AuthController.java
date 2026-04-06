@@ -1,6 +1,6 @@
 package com.techcup_futbol.techcup_futbol.controllers;
 
-import com.techcup_futbol.techcup_futbol.config.JwtService;
+import com.techcup_futbol.techcup_futbol.security.JwtService;
 import com.techcup_futbol.techcup_futbol.model.User.User;
 import com.techcup_futbol.techcup_futbol.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
