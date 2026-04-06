@@ -30,10 +30,10 @@ public class UserRequestDTO {
     private UserType type;
     private boolean isActive;
     private AcademicProgram academicProgram;
-    private int semester;
+    private Integer semester;
     private String department;
     private ContractType contractType;
-    private int graduationYear;
+    private Integer graduationYear;
     private String gmailEmail;
     private String relationship;
     private String area;
