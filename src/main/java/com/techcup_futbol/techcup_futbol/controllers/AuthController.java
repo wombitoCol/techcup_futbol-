@@ -1,25 +1,48 @@
-/* 
-package com.techcup_futbol.techcup_futbol.controller;
+package com.techcup_futbol.techcup_futbol.controllers;
 
-import com.techcup_futbol.techcup_futbol.model.User;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.HttpStatus;
+import com.techcup_futbol.techcup_futbol.security.JwtService;
+import com.techcup_futbol.techcup_futbol.model.User.User;
+import com.techcup_futbol.techcup_futbol.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-@Tag(name = "Authentication", description = "Security and login endpoints")
 public class AuthController {
 
+    private final UserRepository userRepository;
+    private final JwtService jwtService;
+    private final PasswordEncoder passwordEncoder;
+
+    public AuthController(UserRepository userRepository, JwtService jwtService, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.jwtService = jwtService;
+        this.passwordEncoder = passwordEncoder;
+    }
+
     @PostMapping("/login")
-    @Operation(summary = "Login", description = "Validates the user's email and password.")
-    public ResponseEntity<String> login(@RequestBody User loginData) {
-        if ("demo@tournament.com".equals(loginData.getEmail()) && "1234".equals(loginData.getPassword())) {
-            return ResponseEntity.ok("Successful Authentication");
+    public ResponseEntity<?> login(@RequestBody Map<String, String> body) {
+        String email = body.get("email");
+        String password = body.get("password");
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            return ResponseEntity.status(401).body("Contraseña incorrecta");
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+
+        List<String> roles = List.of(user.getType().name());
+        String token = jwtService.generateToken(email, roles);
+
+        return ResponseEntity.ok(Map.of("token", token));
+    }
+    @GetMapping("/hash/{password}")
+    public String hashPassword(@PathVariable String password) {
+        return passwordEncoder.encode(password);
     }
 }
-*/
