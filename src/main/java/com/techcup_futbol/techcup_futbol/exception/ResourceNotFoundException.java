@@ -30,4 +30,8 @@ public class ResourceNotFoundException extends RuntimeException {
         return new ResourceNotFoundException(
                 String.format("%s with ID '%s' not found", resourceType, resourceId));
     }
+
+    public static Object userNotFound(String string, Long id) {
+        throw new UnsupportedOperationException("Unimplemented method 'userNotFound'");
+    }
 }

@@ -19,6 +19,7 @@ public interface UserService {
     UserResponseDTO updateUser(Long id, UserRequestDTO dto);
     UserResponseDTO createUser(UserRequestDTO dto);
     List<UserResponseDTO> getAllUsers();
+    UserResponseDTO getUserById(Long id);
 
     
 }

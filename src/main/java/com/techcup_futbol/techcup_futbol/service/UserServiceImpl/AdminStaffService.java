@@ -1,6 +1,7 @@
 package com.techcup_futbol.techcup_futbol.service.UserServiceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -70,5 +71,11 @@ public class AdminStaffService implements UserService {
         return adminStaffs.stream()
                 .map(userMapper::toDto)
                 .toList();
+    }
+
+    @Override
+    public UserResponseDTO getUserById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        return userMapper.toDto(user);
     }
 }

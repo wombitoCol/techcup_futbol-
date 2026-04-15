@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import com.techcup_futbol.techcup_futbol.dto.Request.TournamentRequestDTO;
 import com.techcup_futbol.techcup_futbol.dto.Request.UserRequestDTO;
 import com.techcup_futbol.techcup_futbol.dto.Response.TournamentResponseDTO;
@@ -78,5 +79,10 @@ public class StudentService implements UserService {
                 .toList();
     }
 
+    @Override
+    public UserResponseDTO getUserById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        return userMapper.toDto(user);
+    }
 
 } 

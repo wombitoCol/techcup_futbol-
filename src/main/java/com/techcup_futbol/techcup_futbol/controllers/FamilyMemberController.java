@@ -5,6 +5,9 @@ import com.techcup_futbol.techcup_futbol.dto.Response.UserResponseDTO;
 import com.techcup_futbol.techcup_futbol.service.UserServiceImpl.FamilyMemberService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,5 +41,11 @@ public class FamilyMemberController {
     public ResponseEntity<Void> deleteFamilyMember(@PathVariable Long id) {
         familyMemberService.deleteUser(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<UserResponseDTO>> getAllFamilyMembers() {
+        List<UserResponseDTO> familyMembers = familyMemberService.getAllUsers();
+        return ResponseEntity.ok(familyMembers);
     }
 }

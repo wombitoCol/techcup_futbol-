@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import com.techcup_futbol.techcup_futbol.dto.Request.UserRequestDTO;
 import com.techcup_futbol.techcup_futbol.dto.Response.UserResponseDTO;
 import com.techcup_futbol.techcup_futbol.exception.ResourceNotFoundException;
@@ -74,5 +75,11 @@ public class ProfessorService implements UserService {
         return professors.stream()
                 .map(userMapper::toDto)
                 .toList();
+    }
+
+    @Override
+    public UserResponseDTO getUserById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        return userMapper.toDto(user);
     }
 }
