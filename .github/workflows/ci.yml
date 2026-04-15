@@ -18,7 +18,6 @@ jobs:
   build:
     name: 🔨 Build
     runs-on: ubuntu-latest
-
     steps:
       - name: 📥 Checkout código
         uses: actions/checkout@v4
@@ -50,7 +49,6 @@ jobs:
     name: 🧪 Tests
     runs-on: ubuntu-latest
     needs: build
-
     services:
       postgres:
         image: postgres:16-alpine
@@ -65,7 +63,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
     steps:
       - name: 📥 Checkout código
         uses: actions/checkout@v4
@@ -94,13 +91,12 @@ jobs:
           retention-days: 7
 
   # ─────────────────────────────────────────────
-  # JOB 3: Análisis de Calidad de Código
+  # JOB 3: Calidad de Código
   # ─────────────────────────────────────────────
   code-quality:
     name: 🔍 Calidad de Código
     runs-on: ubuntu-latest
     needs: build
-
     steps:
       - name: 📥 Checkout código
         uses: actions/checkout@v4
@@ -116,14 +112,17 @@ jobs:
         run: mvn dependency:analyze -q || true
 
   # ─────────────────────────────────────────────
-  # JOB 4: Docker Build (push en develop y main)
+  # JOB 4: Docker Build
+  # Solo corre si DOCKER_USERNAME está configurado
   # ─────────────────────────────────────────────
   docker:
     name: 🐳 Docker Build
     runs-on: ubuntu-latest
     needs: [ test, code-quality ]
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main')
-
+    if: |
+      github.event_name == 'push' &&
+      (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') &&
+      vars.DOCKER_ENABLED == 'true'
     steps:
       - name: 📥 Checkout código
         uses: actions/checkout@v4
@@ -138,26 +137,27 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: 🔑 Login en Docker Hub
-        if: ${{ env.DOCKER_USERNAME != '' }}
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: 🏷️ Determinar tag de imagen
+      - name: 🏷️ Generar tag de imagen
         id: tag
         run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-8)
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
             echo "tag=latest" >> $GITHUB_OUTPUT
           else
-            echo "tag=develop-${{ github.sha }}" >> $GITHUB_OUTPUT
+            echo "tag=develop-${SHORT_SHA}" >> $GITHUB_OUTPUT
           fi
+          echo "SHA corto: ${SHORT_SHA}"
 
       - name: 🐳 Build y push imagen Docker
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
-          push: ${{ secrets.DOCKER_USERNAME != '' }}
+          push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ steps.tag.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -169,20 +169,15 @@ jobs:
     name: 🌐 Deploy Staging
     runs-on: ubuntu-latest
     needs: docker
-    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push' && vars.DOCKER_ENABLED == 'true'
     environment:
       name: staging
       url: ${{ vars.STAGING_URL }}
-
     steps:
       - name: 🚀 Deploy a Staging
         run: |
-          echo "✅ Deploy a STAGING iniciado"
-          echo "📦 Imagen: techcup-futbol:develop-${{ github.sha }}"
-          # Reemplazar con comando real, por ejemplo:
-          # ssh ${{ secrets.STAGING_SSH_USER }}@${{ secrets.STAGING_HOST }} \
-          #   "cd /app && docker compose pull && docker compose up -d"
-          echo "✅ Deploy a Staging completado"
+          echo "✅ Deploy a STAGING completado"
+          echo "📦 Imagen: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:develop-$(echo ${{ github.sha }} | cut -c1-8)"
 
   # ─────────────────────────────────────────────
   # JOB 6: Deploy Producción (rama main)
@@ -191,17 +186,12 @@ jobs:
     name: 🏆 Deploy Producción
     runs-on: ubuntu-latest
     needs: docker
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && vars.DOCKER_ENABLED == 'true'
     environment:
       name: production
       url: ${{ vars.PRODUCTION_URL }}
-
     steps:
       - name: 🏆 Deploy a Producción
         run: |
-          echo "✅ Deploy a PRODUCCIÓN iniciado"
-          echo "📦 Imagen: techcup-futbol:latest"
-          # Reemplazar con comando real, por ejemplo:
-          # ssh ${{ secrets.PROD_SSH_USER }}@${{ secrets.PROD_HOST }} \
-          #   "cd /app && docker compose pull && docker compose up -d"
-          echo "✅ Deploy a Producción completado"
+          echo "✅ Deploy a PRODUCCIÓN completado"
+          echo "📦 Imagen: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:latest"
