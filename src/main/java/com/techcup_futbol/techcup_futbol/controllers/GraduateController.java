@@ -48,4 +48,10 @@ public class GraduateController {
         List<UserResponseDTO> graduates = graduateService.getAllUsers();
         return ResponseEntity.ok(graduates);
     }
+
+    @GetMapping
+    public ResponseEntity<UserResponseDTO> findGraduate(@PathVariable Long id) {
+        UserResponseDTO graduate = graduateService.getUserById(id);
+        return ResponseEntity.ok(graduate);
+    }
 }

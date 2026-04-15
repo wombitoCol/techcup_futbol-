@@ -48,4 +48,10 @@ public class ProfessorController {
         List<UserResponseDTO> professors = professorService.getAllUsers();
         return ResponseEntity.ok(professors);
     }
+
+    @GetMapping
+    public ResponseEntity<UserResponseDTO> findProfessor(@PathVariable Long id) {
+        UserResponseDTO professor = professorService.getUserById(id);
+        return ResponseEntity.ok(professor);
+    }
 }

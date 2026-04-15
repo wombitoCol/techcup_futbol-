@@ -45,7 +45,7 @@ public class AdminStaffController {
 
     @GetMapping
     public ResponseEntity<UserResponseDTO> findAdminStaff(@PathVariable Long id) {
-        List<UserResponseDTO> adminStaff = adminStaffService.getAllUsers();
+        UserResponseDTO adminStaff = adminStaffService.getUserById(id);
         return ResponseEntity.ok(adminStaff);
     }
 

@@ -55,9 +55,15 @@ public class StudentController {
 
 
     @GetMapping
-        public ResponseEntity<List<UserResponseDTO>> getAllStudents() {
-            List<UserResponseDTO> students = studentService.getAllUsers();
-            return ResponseEntity.ok(students);
-        }
+    public ResponseEntity<List<UserResponseDTO>> getAllStudents() {
+        List<UserResponseDTO> students = studentService.getAllUsers();
+        return ResponseEntity.ok(students);
+    }
+
+    @GetMapping
+    public ResponseEntity<UserResponseDTO> findStudent(@PathVariable Long id) {
+        UserResponseDTO student = studentService.getUserById(id);
+        return ResponseEntity.ok(student);
+    }
 
 }
