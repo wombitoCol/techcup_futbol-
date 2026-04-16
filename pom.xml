@@ -20,6 +20,27 @@
         <java.version>21</java.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <lombok.version>1.18.38</lombok.version>
+        <jacoco.version>0.8.12</jacoco.version>
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <!-- Excluir clases que no aportan cobertura real -->
+        <sonar.exclusions>
+            **/TechcupFutbolApplication.java,
+            **/config/**,
+            **/dto/**,
+            **/model/Notification/**,
+            **/model/User/UserType.java,
+            **/model/User/AcademicProgram.java,
+            **/model/User/ContractType.java,
+            **/model/Match/MatchState.java,
+            **/model/Tournament/TournamentState.java,
+            **/model/Tournament/Field.java,
+            **/model/Payment/Payment.java,
+            **/model/Payment/PaymentStatus.java,
+            **/model/PlayerDecorator/SportsProfile.java
+        </sonar.exclusions>
     </properties>
 
     <dependencies>
@@ -99,6 +120,24 @@
             <version>0.12.6</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- Mockito para mocking en tests -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -127,6 +166,71 @@
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
+            </plugin>
+
+            <!-- JaCoCo: cobertura de código para SonarQube -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <!-- Instrumenta el agente antes de los tests -->
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- Genera el reporte XML que lee SonarQube -->
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <!-- Fuerza fallo si cobertura < 68% -->
+                    <execution>
+                        <id>check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.85</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>BRANCH</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.85</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                            <excludes>
+                                <exclude>com/techcup_futbol/techcup_futbol/TechcupFutbolApplication.class</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/config/**</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/dto/**</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/model/Notification/**</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/model/User/UserType.class</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/model/User/AcademicProgram.class</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/model/User/ContractType.class</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/model/Match/MatchState.class</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/model/Tournament/TournamentState.class</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/model/Payment/Payment.class</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/model/Payment/PaymentStatus.class</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/model/PlayerDecorator/SportsProfile.class</exclude>
+                                <exclude>com/techcup_futbol/techcup_futbol/model/Tournament/Field.class</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
