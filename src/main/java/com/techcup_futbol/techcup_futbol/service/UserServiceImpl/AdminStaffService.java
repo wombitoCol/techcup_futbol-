@@ -15,7 +15,9 @@ import com.techcup_futbol.techcup_futbol.repository.UserRepository;
 import com.techcup_futbol.techcup_futbol.service.UserService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j //libreria para logs
 @RequiredArgsConstructor
 @Service
 public class AdminStaffService implements UserService {
@@ -26,6 +28,7 @@ public class AdminStaffService implements UserService {
     @Override
     public UserResponseDTO createUser(UserRequestDTO request) {
 
+        log.info("Creando estudiante con email: {}", request.getEmail());
         User newUser = User.builder()
                 .email(request.getEmail())
                 .password(request.getPassword())
@@ -39,13 +42,14 @@ public class AdminStaffService implements UserService {
                 .build();
 
         User savedUser = userRepository.save(newUser);
+        log.info("AdminStaff creado con ID: {} y correo: {}", savedUser.getId(), savedUser.getEmail());
         return userMapper.toDto(savedUser);
     }
 
     @Override
     public void deleteUser(Long id) {
         if (!userRepository.existsById(id)) {
-            throw ResourceNotFoundException.create("ID", id);
+            throw ResourceNotFoundException.create("AdminStaff", id);
         }
         userRepository.deleteById(id);
     }
@@ -53,7 +57,7 @@ public class AdminStaffService implements UserService {
     @Override
     public UserResponseDTO updateUser(Long id, UserRequestDTO dto) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> ResourceNotFoundException.create("ID", id));
+                .orElseThrow(() -> ResourceNotFoundException.create("AdminStaff", id));
 
         user.setPassword(dto.getPassword());
         user.setArea(dto.getArea());
@@ -61,7 +65,9 @@ public class AdminStaffService implements UserService {
         user.setPhoneNumber(dto.getPhone());
         user.setPhoto(dto.getPhoto());
 
+
         User updated = userRepository.save(user);
+        log.info("AdminStaff actualizado con ID: {} correo antiguo: {}y correo: {}", updated.getId(),dto.getEmail(), updated.getEmail());
         return userMapper.toDto(updated);
     }
  

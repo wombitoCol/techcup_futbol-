@@ -15,7 +15,9 @@ import com.techcup_futbol.techcup_futbol.repository.UserRepository;
 import com.techcup_futbol.techcup_futbol.service.UserService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j //libreria para logs
 @RequiredArgsConstructor
 @Service
 public class FamilyMemberService implements UserService {
@@ -40,6 +42,7 @@ public class FamilyMemberService implements UserService {
                 .build();
 
         User savedUser = userRepository.save(newUser);
+        log.info("Familiar creado con ID: {} y correo: {}", savedUser.getId(), savedUser.getEmail());
         return userMapper.toDto(savedUser);
     }
 
@@ -64,6 +67,7 @@ public class FamilyMemberService implements UserService {
         user.setPhoto(dto.getPhoto());
 
         User updated = userRepository.save(user);
+        log.info("Familiar actualizado con ID: {} correo antiguo: {}y correo: {}", updated.getId(),dto.getEmail(), updated.getEmail());
         return userMapper.toDto(updated);
     }
 

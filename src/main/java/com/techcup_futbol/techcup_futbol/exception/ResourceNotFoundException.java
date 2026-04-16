@@ -3,6 +3,9 @@ package com.techcup_futbol.techcup_futbol.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j //libreria para logs
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class ResourceNotFoundException extends RuntimeException {
 
@@ -27,11 +30,9 @@ public class ResourceNotFoundException extends RuntimeException {
      * @return a new resource not found exception
      */
     public static ResourceNotFoundException create(String resourceType, Object resourceId) {
+        log.error("Objeto {} con ID {} no encontrado", resourceType, resourceId);
         return new ResourceNotFoundException(
                 String.format("%s with ID '%s' not found", resourceType, resourceId));
     }
 
-    public static Object userNotFound(String string, Long id) {
-        throw new UnsupportedOperationException("Unimplemented method 'userNotFound'");
-    }
 }

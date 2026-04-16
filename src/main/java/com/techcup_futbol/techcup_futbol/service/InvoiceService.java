@@ -16,7 +16,9 @@ import com.techcup_futbol.techcup_futbol.repository.TournamentRepository;
 import com.techcup_futbol.techcup_futbol.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j //libreria para logs
 @RequiredArgsConstructor
 @Service
 public class InvoiceService {
@@ -36,6 +38,7 @@ public class InvoiceService {
         invoice.setTournament(request.getTournament());
 
         Invoice savedInvoice = invoiceRepository.save(invoice);
+        log.info("Factura creada con ID: {} monto: {}", savedInvoice.getId(), savedInvoice.getAmount());
 
         return invoiceMapper.toDto(savedInvoice);
     }
@@ -52,6 +55,7 @@ public class InvoiceService {
         invoice.setTournament(dto.getTournament());
 
         Invoice updated = invoiceRepository.save(invoice);
+        log.info("Factura actualizada con ID: {} monto antiguo: {} y monto nuevo: {}", updated.getId(), dto.getAmount(), updated.getAmount());
         return invoiceMapper.toDto(updated);
     }
 

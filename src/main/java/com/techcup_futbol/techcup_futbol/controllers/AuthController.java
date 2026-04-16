@@ -41,6 +41,7 @@ public class AuthController {
 
         return ResponseEntity.ok(Map.of("token", token));
     }
+    
     @GetMapping("/hash/{password}")
     public String hashPassword(@PathVariable String password) {
         return passwordEncoder.encode(password);
