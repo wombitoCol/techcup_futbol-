@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDate;
-
-import org.springframework.stereotype.Indexed;
+import java.util.List;
 
 @Entity
 @Data
@@ -29,18 +27,23 @@ public class User {
     @Column(nullable = false)
     protected String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    protected UserType type;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "user_roles",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    protected List<UserType> roles;
 
     @Column(nullable = false)
     protected boolean isActive;
 
     @Column(nullable = false)
     protected String name;
+
     @Column(nullable = false)
     protected LocalDate birthDate;
-    
+
     @Column(nullable = false)
     protected String gender;
 
@@ -76,8 +79,4 @@ public class User {
 
     @Column(nullable = true)
     private String area;
-
-
-    public UserType getAffiliationType(){return type;};
-
 }
