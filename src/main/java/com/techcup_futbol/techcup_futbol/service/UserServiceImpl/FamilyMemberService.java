@@ -12,52 +12,70 @@ import com.techcup_futbol.techcup_futbol.mappers.UserMapper;
 import com.techcup_futbol.techcup_futbol.model.User.User;
 import com.techcup_futbol.techcup_futbol.model.User.UserType;
 import com.techcup_futbol.techcup_futbol.repository.UserRepository;
+import com.techcup_futbol.techcup_futbol.repository.UserTypeRepository;
 import com.techcup_futbol.techcup_futbol.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j //libreria para logs
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class FamilyMemberService implements UserService {
 
     private final UserRepository userRepository;
+    private final UserTypeRepository userTypeRepository;
     private final UserMapper userMapper;
 
     @Override
     public UserResponseDTO createUser(UserRequestDTO request) {
+        log.info("Intentando crear FamilyMember con email: {}", request.getEmail());
+
+        List<UserType> roles = request.getRoles().stream()
+            .map(roleName -> userTypeRepository.findByName(roleName)
+                .orElseThrow(() -> {
+                    log.error("Rol {} no encontrado en la BD", roleName);
+                    return new RuntimeException("Rol " + roleName + " no encontrado");
+                }))
+            .toList();
 
         User newUser = User.builder()
-                .email(request.getEmail())
-                .password(request.getPassword())
-                .name(request.getName())
-                .type(UserType.FAMILY_MEMBER)
-                .birthDate(request.getBirthDate())
-                .gender(request.getGender())
-                .phoneNumber(request.getPhone())
-                .photo(request.getPhoto())
-                .gmailEmail(request.getGmailEmail())
-                .relatedUser(request.getRelatedUser())
-                .build();
+            .email(request.getEmail())
+            .password(request.getPassword())
+            .name(request.getName())
+            .roles(roles)
+            .birthDate(request.getBirthDate())
+            .gender(request.getGender())
+            .phoneNumber(request.getPhone())
+            .photo(request.getPhoto())
+            .gmailEmail(request.getGmailEmail())
+            .relatedUser(request.getRelatedUser())
+            .build();
 
         User savedUser = userRepository.save(newUser);
-        log.info("Familiar creado con ID: {} y correo: {}", savedUser.getId(), savedUser.getEmail());
+        log.info("FamilyMember creado con ID: {} y correo: {}", savedUser.getId(), savedUser.getEmail());
         return userMapper.toDto(savedUser);
     }
 
     @Override
     public void deleteUser(Long id) {
+        log.info("Intentando eliminar FamilyMember con ID: {}", id);
         if (!userRepository.existsById(id)) {
+            log.error("FamilyMember con ID {} no encontrado", id);
             throw ResourceNotFoundException.create("ID", id);
         }
         userRepository.deleteById(id);
+        log.info("FamilyMember con ID {} eliminado correctamente", id);
     }
 
     @Override
     public UserResponseDTO updateUser(Long id, UserRequestDTO dto) {
+        log.info("Actualizando FamilyMember con ID: {}", id);
         User user = userRepository.findById(id)
-                .orElseThrow(() -> ResourceNotFoundException.create("ID", id));
+            .orElseThrow(() -> {
+                log.error("FamilyMember con ID {} no encontrado", id);
+                return ResourceNotFoundException.create("ID", id);
+            });
 
         user.setPassword(dto.getPassword());
         user.setGmailEmail(dto.getGmailEmail());
@@ -67,20 +85,22 @@ public class FamilyMemberService implements UserService {
         user.setPhoto(dto.getPhoto());
 
         User updated = userRepository.save(user);
-        log.info("Familiar actualizado con ID: {} correo antiguo: {}y correo: {}", updated.getId(),dto.getEmail(), updated.getEmail());
+        log.info("FamilyMember con ID {} actualizado correctamente", updated.getId());
         return userMapper.toDto(updated);
     }
 
     @Override
     public List<UserResponseDTO> getAllUsers() {
-        List<User> familyMembers = userRepository.findByType(UserType.FAMILY_MEMBER);
+        log.info("Obteniendo todos los FamilyMembers");
+        List<User> familyMembers = userRepository.findByRoleName("FAMILY_MEMBER");
         return familyMembers.stream()
-                .map(userMapper::toDto)
-                .toList();
+            .map(userMapper::toDto)
+            .toList();
     }
 
     @Override
     public UserResponseDTO getUserById(Long id) {
+        log.info("Buscando FamilyMember con ID: {}", id);
         Optional<User> user = userRepository.findById(id);
         return userMapper.toDto(user);
     }
