@@ -19,13 +19,13 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
-    protected String email;
+    private String email;
 
     @Column(nullable = false)
-    protected String password;
+    private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -33,25 +33,25 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    protected List<UserType> roles;
+    private  List<UserType> roles;
 
     @Column(nullable = false)
-    protected boolean isActive;
+    private boolean isActive;
 
     @Column(nullable = false)
-    protected String name;
+    private String name;
 
     @Column(nullable = false)
-    protected LocalDate birthDate;
+    private LocalDate birthDate;
 
     @Column(nullable = false)
-    protected String gender;
+    private String gender;
 
     @Column(nullable = false)
-    protected Long phoneNumber;
+    private Long phoneNumber;
 
     @Column(nullable = true)
-    protected String photo;
+    private String photo;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)

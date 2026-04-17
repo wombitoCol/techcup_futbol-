@@ -1,6 +1,7 @@
 package com.techcup_futbol.techcup_futbol.dto.Request;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.techcup_futbol.techcup_futbol.model.User.AcademicProgram;
 import com.techcup_futbol.techcup_futbol.model.User.ContractType;
@@ -19,7 +20,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserRequestDTO {
 
-    public static final UserType STUDENT = null;
     private String email;
     private String password;
     private String name;
@@ -27,7 +27,7 @@ public class UserRequestDTO {
     private String gender;
     private Long phone;
     private String photo;
-    private UserType type;
+    private List<String> roles;
     private boolean isActive;
     private AcademicProgram academicProgram;
     private Integer semester;
