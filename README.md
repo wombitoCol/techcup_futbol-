@@ -54,7 +54,7 @@ https://pixso.net/app/design/eY3DOlkD23U2UYJmHkOs6A?showQuickFrame=true&new=1&ic
 **Prueba de autenticación JWT - Login exitoso (GET /api/users/students)**
 <img width="1614" height="1001" alt="image" src="https://github.com/user-attachments/assets/919c4d54-59a0-46f8-b584-69785ce447ba" />
 **Prueba de autenticación JWT - Login fallido (POST /api/auth/login)**
-<img width="1915" height="849" alt="image" src="https://github.com/user-attachments/assets/020669aa-1dcf-4fd7-b7b1-2402ab21d49d" />
+<img width="1920" height="927" alt="image" src="https://github.com/user-attachments/assets/08fcb4f1-5a7f-451c-bad5-253e99c63765" />
 **Prueba de autenticación JWT - Acceso sin token (GET /api/users)**
 <img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/cccca8aa-8ce0-4f71-84be-e17157bf399a" />
 
