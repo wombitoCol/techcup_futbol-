@@ -55,6 +55,12 @@ https://pixso.net/app/design/eY3DOlkD23U2UYJmHkOs6A?showQuickFrame=true&new=1&ic
 <img width="1614" height="1001" alt="image" src="https://github.com/user-attachments/assets/919c4d54-59a0-46f8-b584-69785ce447ba" />
 **Prueba de autenticación JWT - Login fallido (POST /api/auth/login)**
 <img width="1920" height="978" alt="image" src="https://github.com/user-attachments/assets/8f7d6192-7e90-49b0-857b-3c5b4ec2c377" />
+**Prueba de autenticación JWT - Acceso sin token (GET /api/users)**
+<img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/cccca8aa-8ce0-4f71-84be-e17157bf399a" />
+
+
+<img width="1912" height="978" alt="image" src="https://github.com/user-attachments/assets/8f4e7041-f93e-44a7-adb0-b9fda5df0c33" />
+
 
 **Documentación API - Swagger**
 <img width="1917" height="861" alt="image" src="https://github.com/user-attachments/assets/22152ae6-732e-4570-a051-190619f8d96c" />
