@@ -9,20 +9,19 @@ import org.springframework.boot.test.context.SpringBootTest; // <-- Cambiamos a 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest // <-- Nueva etiqueta súper poderosa
+@SpringBootTest 
 public class UserRepositoryTest {
 
     @Autowired
     private UserRepository userRepository;
 
-    /* 
     @Test
     public void testCreateAndSaveUser() {
         // 1. Preparamos un usuario de prueba
         User user = new User() {
             @Override
             public UserType getAffiliationType() {
-                return "default";
+                return null;
             }
         };
         user.setEmail("prueba@techcup.com");
@@ -35,5 +34,4 @@ public class UserRepositoryTest {
         assertNotNull(savedUser.getId());
         assertEquals("prueba@techcup.com", savedUser.getEmail());
     }
-    */
 }

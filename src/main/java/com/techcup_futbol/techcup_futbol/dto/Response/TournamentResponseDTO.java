@@ -30,8 +30,4 @@ public class TournamentResponseDTO {
     private List<Team> teams;
     private Team winner;
     
-
-
-    
-
 }
