@@ -59,8 +59,6 @@ https://pixso.net/app/design/eY3DOlkD23U2UYJmHkOs6A?showQuickFrame=true&new=1&ic
 <img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/cccca8aa-8ce0-4f71-84be-e17157bf399a" />
 
 
-<img width="1912" height="978" alt="image" src="https://github.com/user-attachments/assets/8f4e7041-f93e-44a7-adb0-b9fda5df0c33" />
-
 
 **Documentación API - Swagger**
 <img width="1917" height="861" alt="image" src="https://github.com/user-attachments/assets/22152ae6-732e-4570-a051-190619f8d96c" />
