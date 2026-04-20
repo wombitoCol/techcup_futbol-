@@ -47,7 +47,8 @@ https://pixso.net/app/design/eY3DOlkD23U2UYJmHkOs6A?showQuickFrame=true&new=1&ic
 
 **Díagrama de contexto:**
 <img width="969" height="559" alt="image" src="https://github.com/user-attachments/assets/d2a74db8-dc8d-4d4a-a7c7-1a7c3c3d0ad8" />
-
+**Logs**
+<img width="1713" height="413" alt="image" src="https://github.com/user-attachments/assets/684ece43-1f30-4a33-88cf-c5b2fd76d67b" />
 
 ---
 
