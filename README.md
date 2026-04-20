@@ -1,4 +1,4 @@
-# TECHCUP Fútbol ⚽
+<img width="1571" height="898" alt="image" src="https://github.com/user-attachments/assets/de8bcb0c-8f95-40e2-ae96-44308c00264f" /># TECHCUP Fútbol ⚽
 
 TECHCUP Fútbol es una plataforma web desarrollada para gestionar el torneo semestral de fútbol de los programas de Ingeniería de Sistemas, Ingeniería de Inteligencia Artificial, Ingeniería de Ciberseguridad e Ingeniería Estadística de la Escuela Colombiana de Ingeniería.
 
@@ -49,6 +49,20 @@ https://pixso.net/app/design/eY3DOlkD23U2UYJmHkOs6A?showQuickFrame=true&new=1&ic
 <img width="969" height="559" alt="image" src="https://github.com/user-attachments/assets/d2a74db8-dc8d-4d4a-a7c7-1a7c3c3d0ad8" />
 **Logs**
 <img width="1713" height="413" alt="image" src="https://github.com/user-attachments/assets/684ece43-1f30-4a33-88cf-c5b2fd76d67b" />
+**Prueba de autenticación JWT - Login exitoso (POST /api/auth/login)**
+<img width="1571" height="898" alt="image" src="https://github.com/user-attachments/assets/5ad1d703-9d4a-4795-ac68-1037c5cdda8d" />
+**Prueba de autenticación JWT - Login exitoso (GET /api/users/students)**
+<img width="1614" height="1001" alt="image" src="https://github.com/user-attachments/assets/919c4d54-59a0-46f8-b584-69785ce447ba" />
+**Prueba de autenticación JWT - Login fallido (POST /api/auth/login)**
+<img width="1920" height="978" alt="image" src="https://github.com/user-attachments/assets/8f7d6192-7e90-49b0-857b-3c5b4ec2c377" />
+
+**Documentación API - Swagger**
+<img width="1917" height="861" alt="image" src="https://github.com/user-attachments/assets/22152ae6-732e-4570-a051-190619f8d96c" />
+<img width="1919" height="903" alt="image" src="https://github.com/user-attachments/assets/226cb66c-6895-40c9-a020-1514ed398ac6" />
+<img width="1920" height="872" alt="image" src="https://github.com/user-attachments/assets/6a293770-5fa0-4c11-b560-87bb84ab4504" />
+
+
+
 
 ---
 
