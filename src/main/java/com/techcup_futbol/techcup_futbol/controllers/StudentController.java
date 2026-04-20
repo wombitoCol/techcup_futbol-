@@ -60,10 +60,9 @@ public class StudentController {
         return ResponseEntity.ok(students);
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> findStudent(@PathVariable Long id) {
         UserResponseDTO student = studentService.getUserById(id);
         return ResponseEntity.ok(student);
     }
-
 }

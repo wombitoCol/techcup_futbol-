@@ -43,7 +43,7 @@ public class AdminStaffController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> findAdminStaff(@PathVariable Long id) {
         UserResponseDTO adminStaff = adminStaffService.getUserById(id);
         return ResponseEntity.ok(adminStaff);

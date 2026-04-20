@@ -43,7 +43,7 @@ public class FamilyMemberController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> findFamilyMember(@PathVariable Long id) {
         UserResponseDTO familyMember = familyMemberService.getUserById(id);
         return ResponseEntity.ok(familyMember);

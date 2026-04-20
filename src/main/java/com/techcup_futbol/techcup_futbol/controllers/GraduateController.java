@@ -49,7 +49,7 @@ public class GraduateController {
         return ResponseEntity.ok(graduates);
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> findGraduate(@PathVariable Long id) {
         UserResponseDTO graduate = graduateService.getUserById(id);
         return ResponseEntity.ok(graduate);

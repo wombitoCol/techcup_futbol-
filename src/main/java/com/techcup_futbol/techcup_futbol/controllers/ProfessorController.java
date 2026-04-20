@@ -49,7 +49,7 @@ public class ProfessorController {
         return ResponseEntity.ok(professors);
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> findProfessor(@PathVariable Long id) {
         UserResponseDTO professor = professorService.getUserById(id);
         return ResponseEntity.ok(professor);
