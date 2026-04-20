@@ -1,4 +1,4 @@
-<img width="1571" height="898" alt="image" src="https://github.com/user-attachments/assets/de8bcb0c-8f95-40e2-ae96-44308c00264f" /># TECHCUP Fútbol ⚽
+# TECHCUP Fútbol ⚽
 
 TECHCUP Fútbol es una plataforma web desarrollada para gestionar el torneo semestral de fútbol de los programas de Ingeniería de Sistemas, Ingeniería de Inteligencia Artificial, Ingeniería de Ciberseguridad e Ingeniería Estadística de la Escuela Colombiana de Ingeniería.
 
