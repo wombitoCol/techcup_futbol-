@@ -50,11 +50,11 @@ https://pixso.net/app/design/eY3DOlkD23U2UYJmHkOs6A?showQuickFrame=true&new=1&ic
 **Logs**
 <img width="1713" height="413" alt="image" src="https://github.com/user-attachments/assets/684ece43-1f30-4a33-88cf-c5b2fd76d67b" />
 **Prueba de autenticación JWT - Login exitoso (POST /api/auth/login)**
-<img width="1571" height="898" alt="image" src="https://github.com/user-attachments/assets/5ad1d703-9d4a-4795-ac68-1037c5cdda8d" />
+<img width="1910" height="805" alt="image" src="https://github.com/user-attachments/assets/9dd3a7fa-a92b-4f0d-b407-d7243bcc07ec" />
 **Prueba de autenticación JWT - Login exitoso (GET /api/users/students)**
 <img width="1614" height="1001" alt="image" src="https://github.com/user-attachments/assets/919c4d54-59a0-46f8-b584-69785ce447ba" />
 **Prueba de autenticación JWT - Login fallido (POST /api/auth/login)**
-<img width="1920" height="978" alt="image" src="https://github.com/user-attachments/assets/8f7d6192-7e90-49b0-857b-3c5b4ec2c377" />
+<img width="1915" height="849" alt="image" src="https://github.com/user-attachments/assets/020669aa-1dcf-4fd7-b7b1-2402ab21d49d" />
 **Prueba de autenticación JWT - Acceso sin token (GET /api/users)**
 <img width="1920" height="919" alt="image" src="https://github.com/user-attachments/assets/cccca8aa-8ce0-4f71-84be-e17157bf399a" />
 
